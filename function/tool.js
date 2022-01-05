@@ -2,41 +2,34 @@
 const setID = (array) => {
     let id = 0
     for (let i =0; i< array.length; i++){
-        array[i].id = i
         id = i+1
     }
     return id
 }
+// get number
+const getNum = () =>{
+
+}
 // delete items 
-const deleteItem = () => {
-    const btns = document.querySelectorAll('.delete')
-    btns.forEach((btn) => {
-        btn.addEventListener('click', (e) => {
-            const id = e.target.closest('.item').getAttribute('id')
-            if (id ==`actor${id.replace(/[^0-9]/ig, "")}`){
-                console.log('this is actor ')
-                const selectedIndex = actors.findIndex((item) => {
-                    return item.id == id.replace(/[^0-9]/ig, "")
-                })
-                actors.splice(selectedIndex, 1)
-            }else{
-                console.log('this is touch ')
-                const selectedIndex = touchpoints.findIndex((item) => {
-                    return item.id == id.replace(/[^0-9]/ig, "")
-                })
-                touchpoints.splice(selectedIndex, 1)
-            }
-            renderForm()
-        })
+const deleteItem = (e) => {
+    console.log(e.target.closest('.item').getAttribute('id') )
+    actors.filter((actor)=>{
+        return actor.id !== e.target.closest('.item').getAttribute('id') 
     })
+    console.log(actors)
+    renderForm()
+
 }
 // update the info of array
 const updateActorName = ()=>{
     const inputs = document.querySelectorAll('.inputActor')
     inputs.forEach((input)=>{
         input.addEventListener('input',(e)=>{
-            const index = e.target.closest('.item').getAttribute('id').replace(/[^0-9]/ig, "")
-            actors[index].name = e.target.value
+            const index = e.target.closest('.item').getAttribute('id')
+            const currentActor = actors.filter((actor)=>{
+                return actor.id == index 
+            })
+            currentActor[0].name = e.target.value
             console.log(actors)
         })
     })
@@ -46,7 +39,10 @@ const updateActorRole = ()=>{
     inputs.forEach((input)=>{
         input.addEventListener('change',(e)=>{
             const index = e.target.closest('.item').getAttribute('id').replace(/[^0-9]/ig, "")
-            actors[index].role = e.target.value
+            const currentActor = actors.filter((actor)=>{
+                return actor.id == index 
+            })
+            currentActor[0].role = e.target.value
             console.log(actors)
         })
     })
@@ -55,7 +51,7 @@ const updateActorRole = ()=>{
 // click button add more actors to array
 const addActor = () => {
     const actor = {
-        id: setID(actors),
+        id: Math.floor(Math.random() * 10000),
         name: '',
         role: ''
     }
@@ -65,15 +61,19 @@ const addActor = () => {
     renderForm()
 }
 // print actor
-const printActor =(actor)=>{
-    const actorText = `<div class="item" id="actor${actor.id}">
-        <button type="button" class="btn btn-outline-danger btn-sm border delete">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-        </svg>
-        </button>
-        <span class="fw-bold">Actor ${actor.id+1}</span>:<br>
+const printActor =(actor,index)=>{
+    const delBtn = document.createElement('button')
+    delBtn.className = 'btn btn-outline-danger btn-sm border delete'
+    delBtn.innerHTML= deleteImg
+    delBtn.addEventListener('click', (e)=>{
+        console.log('hisdasdasdasd')
+        deleteItem(e)
+    })
+    const actorText = `<div class="item" id="${actor.id}">
+        <div class= "titleActor">
+
+        <span class="fw-bold">Actor ${index+1}:</span>
+        </div>
         <div class="row">
             <div class="col-md-5">
                 <label for="inputActor" class="form-label">Name</label>
@@ -93,6 +93,7 @@ const printActor =(actor)=>{
         </div>
     </div>`
     actorContainer.innerHTML+= actorText
+    document.getElementById(actor.id).querySelector('.titleActor').append(delBtn)
 }
 
 
@@ -108,7 +109,7 @@ function HideButtons(button) {
 // click to add more touchpoints
 const addTouchpoints = ()=>{
     const touchpoint = {
-        id : setID(touchpoints),
+        id : Math.floor(Math.random() * 10000),
         type : '',
         sender:'',
         receiver: '',
@@ -119,23 +120,24 @@ const addTouchpoints = ()=>{
 
     touchpoints.push(touchpoint)
     printTouchpoint(touchpoint)
-    renderForm()
+
 }
 
 
 // print touchpoint
 const printTouchpoint=(touchpoint)=>{
     const touchpointsBtn = `
-    <div class="item" id="touchpoint${touchpoint.id}">
-    <button type="button" class="btn btn-outline-danger btn-sm border delete">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-    <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-    <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-    </svg>
-    </button>
-    <span class="fw-bold">Touchpoint ${touchpoint.id+1}</span>:<br>
-    <button type="button" class="btn btn-outline-primary actionBtn hide">Add action</button>
-    <button type="button" class="btn btn-outline-primary communicationBtn hide">Add communication</button>
+    <div class="item" id="${touchpoint.id}">
+        <div class="touchpoint-title">
+            <button type="button" class="btn btn-outline-danger btn-sm border delete">
+            ${deleteImg}
+            </button>
+            <span class="fw-bold">Touchpoint ${touchpoint.id+1} :</span>
+        </div>
+        <div class="touchpointBtns">
+            <button type="button" class="btn btn-outline-primary actionBtn hide">Add action</button>
+            <button type="button" class="btn btn-outline-primary communicationBtn hide">Add communication</button>
+        </div>
     </div>
     `
     touchpointContainer.innerHTML+=touchpointsBtn
@@ -202,24 +204,24 @@ const printCommunication = (touchpoint)=>{
 const renderForm = ()=>{
     actorContainer.innerHTML=''
     touchpointContainer.innerHTML=''
-
-    setID(actors)
+    let indexActor = 0
+    let indexTouch = 0
+    
     actors.forEach((actor)=>{
-        printActor(actor)
+        printActor(actor,indexActor)
+        indexActor++
+
     })
 
-    setID(touchpoints)
     touchpoints.forEach((touchpoint)=>{
 
         //if type == '' - print touchpoint
         printTouchpoint(touchpoint)
         //if type == 'action' - print action
-        addAction(touchpoint)
         //if type == 'communication' - print coummunication
+        indexTouch++
     })
-    deleteItem()
-    updateActorName()
-    updateActorRole()
+
     
 }
 renderForm()
