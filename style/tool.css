@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.a{
+    height: 80px;
+}
+.nav-link {
+    color: black;
+}
+#cjml {
+    font-size: x-large;
+    float: left;
+}
+#start {
+    margin-right: 50px;
+    width: 100px;
+}
+.nav-item {
+    margin-top: 20px;
+    margin-right: 50px;
+}
