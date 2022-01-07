@@ -37,10 +37,10 @@ const backup = `
 </div>`
 
 const createSwimlane= () => {
+    canvas.innerHTML=''
     actors.forEach((actor)=>{
         canvas.innerHTML += createSwimlaneElement(actor)
     })
-    
 }
 const createSwimlaneElement = (actor) =>{
     //image get from function. pass actor.role
@@ -50,18 +50,56 @@ const createSwimlaneElement = (actor) =>{
             <div class="actor-img">???</div>
             <div class="actor-name">${actor.name}</div>
         </div>
-
+        ${generateDefaultBoxes()}
     </div>`
     return swimlane
 }
-
-// create another box, fill the swimlane with this box and give it data id (touchpoint id)
-// replace those box with correct boxes in correct position by actor id
 // set opactiy:0 to other box 
 
+const createBoxes = (touchpoint) => {
+    // create action box
+    const actionBox = document.createElement('div').className='swimlane-action'
+    const actionContent = document.createElement('div').className='action-content'
+    actionContent.textContent=`${touchpoint.senderDescription}`
+    actionBox.append(actionContent)
+    // const actionBox = `<div class = "swimlane-action">
+    //     <div class="action-content">${touchpoint.senderDescription}</div>
+    // </div>`
 
-const createBoxes = () => {
+    // create sender box 
+    const senderBox = document.createElement('div').className='swimlane-receiver swimlane-item'
+    const channelImg = document.createElement('div').className='channel-img'
+    const communicationContent = document.createElement('div').className='communication-content'
+    communicationContent.textContent=`${touchpoint.senderDescription}`
+    senderBox.append(channelImg, communicationContent)
+    // const senderBox = `<div class="swimlane-sender swimlane-item">
+    //     <div class="channel-img">img</div>
+    //     <div class="communication-content">
+    //     ${touchpoint.senderDescription}
+    //     </div>
+    // </div>`
 
+    // create receiver Box
+    const receiverBox = document.createElement('div').className='swimlane-receiver swimlane-item'
+    //const channelImg = document.createElement('div').className='channel-img'
+    //const communicationContent = document.createElement('div').className='communication-content'
+    communicationContent.textContent=`${touchpoint.senderDescription}`
+    receiverBox.append(channelImg, communicationContent)
+    // const receiverBox = `<div class="swimlane-receiver swimlane-item">
+    //     <div class="channel-img">img</div>
+    //     <div class="communication-content">
+    //     ${touchpoint.receiverDecription}
+    //     </div>
+    // </div>`
+}
+
+const generateDefaultBoxes = () =>{
+    let box = ''
+    touchpoints.forEach((touchpoint)=>{
+        console.log('box')
+        box += `<div class="box" box-id="${touchpoint.id}">box</div>`
+    })
+    return box
 }
 
 

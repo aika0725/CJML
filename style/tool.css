@@ -144,3 +144,16 @@ svg {
     font-family:Calibri;
     font-size:0.833336em
 }
+
+.box {
+    padding: 10px;
+    margin-left: 20px;
+    width: 12rem;
+    height: auto;
+    /* border: 2px #31859c solid; */
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
