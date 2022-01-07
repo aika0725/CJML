@@ -38,6 +38,7 @@
         <div class="row">
             <div class="canvas">
                 111
+                <button onclick="createSwimlane()">+</button>
             </div>
         </div>
         <!-- new model -->
@@ -65,8 +66,8 @@
                                 </a>
                             </h3>
                             <div class="collapse multi-collapse" id="actor-explaination">
-                                Who participated in this whole service process? Please add all
-                                necessary participants (Actors).
+                                <p>Who participated in this whole service process? Please add all
+                                necessary participants (Actors).</p>
                             </div>
                             <button type="button" class="btn btn-light btn-sm border" onclick="createActor()">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -96,7 +97,7 @@
                                 </a>
                             </h3>
                             <div class="collapse multi-collapse" id="touchpoint-explaination">
-                                The steps involved in a journey are described using
+                                <p>The steps involved in a journey are described using
                                 touchpoints which can be a communication (two participants) or
                                 an action (one participant).<br><br>
                                 How many Touchpoints are there from the beginning to the end of
@@ -118,7 +119,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="test()">Submit</button>
+                        <button type="button" class="btn btn-primary" onclick="sortTouchpoints()">Submit</button>
                     </div>
                 </div>
             </div>
@@ -131,6 +132,7 @@
     <script src="function/actors.js"></script>
     <script src="function/touchpoints.js"></script>
     <script src="function/data-process.js"></script>
+    <script src="function/diagram.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>

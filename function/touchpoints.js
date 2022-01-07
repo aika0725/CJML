@@ -12,13 +12,16 @@ const updateTouchpointTitles = () => {
 }
 
 
-const createTouchpoint = () => {
+const createTouchpoint = (e) => {
+    //e.preventDefault()
     // Creates a new touchpoint object
     const touchpoint = {
         id: Math.floor(Math.random() * 10000),
         type: '',
         sender: '',
+        senderID:null,
         receiver: '',
+        receiverID:null,
         channel: '',
         senderDescription: '',
         receiverDecription: '',
@@ -61,7 +64,6 @@ const createAction = (e) => {
     const elementID = e.getAttribute('data-tc')
     e.firstElementChild.querySelector('.act_list').innerHTML = updateActors2Touchpoint(elementID)
 
-    //test
     updateTouchpointSender()
     updateTouchpointSenderDescription()
     updateTouchpointTime()
@@ -104,18 +106,18 @@ const createCommunicationPointElement = () => {
         `<div class="communicationContent">
     Communication Point:<br>
     Who started this event? Please choose the initiator:<div class="sender_list senders"></div><br>
-    Please choose the communication method.<br>
-    <input name = "channel" class="form-control channel" list="channel" placeholder ="Select Method..." required><br>
-        <datalist id="channel">
-            <option value="SMS">
-            <option value="Email">
-            <option value="Telephone conversation">
-            <option value="Face-to-Face">
-            <option value="Website">
-            <option value="Letter">
-            <option value="Payment">
-            <option value="Self-service machine">
-        </datalist>
+    <label for="channel" class="form-label">Please choose the communication method.</label>
+    <select id="" class="form-select channel" name="channel">
+        <option value="" selected> </option>
+        <option value="SMS">SMS</option>
+        <option value="Email">Email</option>
+        <option value="Telephone conversation">Telephone conversation</option>
+        <option value="Face-to-Face">Face-to-Face</option>
+        <option value="Website">Website</option>
+        <option value="Letter">Letter</option>
+        <option value="Payment">Payment</option>
+        <option value="Self-service machine">Self-service machine</option>
+    </select>
     Please choose the other participant (Receiver)<br><div class="recevier_list receivers"></div><br>
     Communication Start Time:<br>
     <input type="datetime-local" class = "form-control date"/><br>
@@ -164,7 +166,7 @@ const updateActors2Touchpoint = (touchpointId) => {
     let actorList = ''
     actors.forEach((actor) => {
         const actorElement = `<div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="${touchpointId}" value="${actor.name}">
+        <input class="form-check-input" type="radio" name="${touchpointId}" data-id="${actor.id}" value="${actor.name}">
         <label class="form-check-label" >${actor.name}</label>
         </div>`
         actorList += actorElement
@@ -178,6 +180,8 @@ const updateTouchpointSender = () => {
         input.addEventListener('change', (e) => {
             const currentTouchpoint = selectedObject(e)
             currentTouchpoint[0].sender = e.target.value
+            e.target.setAttribute('checked', true)
+            currentTouchpoint[0].senderID = e.target.getAttribute('data-id')
             console.log(touchpoints)
         })
     })
@@ -189,6 +193,8 @@ const updateTouchpointReciver = () => {
         input.addEventListener('change', (e) => {
             const currentTouchpoint = selectedObject(e)
             currentTouchpoint[0].receiver = e.target.value
+            e.target.setAttribute('checked', true)
+            currentTouchpoint[0].receiverID = e.target.getAttribute('data-id')
             console.log(touchpoints)
         })
     })
@@ -200,6 +206,7 @@ const updateTouchpointChannel = () => {
         input.addEventListener('change', (e) => {
             const currentTouchpoint = selectedObject(e)
             currentTouchpoint[0].channel = e.target.value
+            e.target.querySelector('option').textContent = e.target.value
             console.log(touchpoints)
         })
     })
@@ -210,6 +217,7 @@ const updateTouchpointSenderDescription = () => {
         input.addEventListener('input', (e) => {
             const currentTouchpoint = selectedObject(e)
             currentTouchpoint[0].senderDescription = e.target.value
+            e.target.setAttribute('value',e.target.value)
             console.log(touchpoints)
         })
     })
@@ -220,6 +228,7 @@ const updateTouchpointReceiverDescription = () => {
         input.addEventListener('input', (e) => {
             const currentTouchpoint = selectedObject(e)
             currentTouchpoint[0].receiverDecription = e.target.value
+            e.target.setAttribute('value',e.target.value)
             console.log(touchpoints)
         })
     })
@@ -230,6 +239,7 @@ const updateTouchpointTime = () => {
         input.addEventListener('change', (e) => {
             const currentTouchpoint = selectedObject(e)
             currentTouchpoint[0].time = e.target.value
+            e.target.setAttribute('value',e.target.value)
             console.log(touchpoints)
         })
     })
@@ -243,38 +253,3 @@ const selectedObject = (e) => {
     return currentTouchpoint
 }
 
-// // render form
-// const renderForm = () => {
-//     actorContainer.innerHTML = ''
-//     touchpointContainer.innerHTML = ''
-//     let indexActor = 0
-//     let indexTouch = 0
-
-//     actors.forEach((actor) => {
-//         printActor(actor, indexActor)
-//         indexActor++
-
-//     })
-
-//     touchpoints.forEach((touchpoint) => {
-//         console.log('1')
-//         console.log(touchpoint)
-//         if (touchpoint.type == 'action') {
-//             printAction(touchpoint.id)
-//             console.log('2')
-//         } else if (touchpoint.type == 'communication') {
-
-//         } else {
-//             printTouchpoint(touchpoint, indexTouch)
-//         }
-
-//         indexTouch++
-//     })
-
-//     generateDeleteButtons()
-//     updateActorNameOnInput()
-//     updateActorRoleOnInput()
-//     addAction()
-
-// }
-// renderForm()

@@ -25,8 +25,8 @@ const createActor = () => {
     // Appends new actor input form
     actorContainer.innerHTML += (createActorElement(actor))
     updateActorTitles()
-    updateActorNameOnInput()
-    updateActorRoleOnInput()
+     updateActorNameOnInput()
+     updateActorRoleOnInput()
 }
 
 const createActorElement = (actor) => {
@@ -79,6 +79,7 @@ const updateActorNameOnInput = () => {
             const currentActor = actors.filter((actor) => {
                 return actor.id == index
             })
+            e.target.setAttribute('value',e.target.value)
             currentActor[0].name = e.target.value
             console.log(actors)
         })
@@ -93,6 +94,9 @@ const updateActorRoleOnInput = () => {
             const currentActor = actors.filter((actor) => {
                 return actor.id == index
             })
+            console.log(e.target.querySelector('option'))
+            e.target.querySelector('option').setAttribute('value',e.target.value)
+            e.target.querySelector('option').textContent = e.target.value
             currentActor[0].role = e.target.value
             console.log(actors)
         })

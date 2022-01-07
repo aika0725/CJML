@@ -28,3 +28,119 @@ svg {
 .hidden {
     display: none;
 }
+
+.swimlane-row {
+    background-color: #f2f2f2;
+    border: 3px #d8d8d8 solid;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-rows: 1fr;
+    gap: 0px 0px;
+    width: fit-content;
+    height: 1in;
+    padding: 15px;
+    margin: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.swimlane-action {
+    padding: 10px;
+    margin-left: 20px;
+    width: 12rem;
+    height: auto;
+    background-color: #ffffff;
+    border: 2px #7f7f7f solid;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    font-family:Calibri;
+    font-size:0.7em;
+    align-items: center;
+    justify-content: center;
+}
+.action-content {
+    word-wrap:break-word;
+}
+
+.swimlane-sender {
+    padding: 10px;
+    margin-left: 20px;
+    width: 12rem;
+    height: auto;
+    background-color: #dbeef4;
+    border: 2px #31859c solid;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    font-family:Calibri;
+    font-size:0.7em;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.swimlane-item>.channel-img {
+    width: 25px;
+    margin-right: 10px;
+    display: flex;
+}
+.swimlane-item>.communication-content {
+    width: 100%;
+    margin-right: 5px;
+    display: flex;
+    word-wrap:break-word;
+}
+
+.swimlane-sender>div>img {
+    margin: auto;
+    width: 100%;
+    height: auto;
+}
+
+.swimlane-receiver {
+    padding: 10px;
+    margin-left: 20px;
+    width: 12rem;
+    height: auto;
+    background-color: #ffffff;
+    border: 2px #31859c solid;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    font-family:Calibri;
+    font-size:0.7em;
+    align-items: center;
+    /* justify-content: center; */
+}
+
+.swimlane-actor {
+    padding: 10px;
+    width: 2rem;
+    height: auto;
+
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+    font-family:Calibri;
+    font-size:0.833336em
+}
