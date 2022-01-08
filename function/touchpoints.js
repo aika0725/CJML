@@ -24,7 +24,7 @@ const createTouchpoint = (e) => {
         receiverID:null,
         channel: '',
         senderDescription: '',
-        receiverDecription: '',
+        receiverDescription: '',
         time: null
     }
 
@@ -182,7 +182,7 @@ const updateTouchpointSender = () => {
             currentTouchpoint[0].sender = e.target.value
             e.target.setAttribute('checked', true)
             currentTouchpoint[0].senderID = e.target.getAttribute('data-id')
-            console.log(touchpoints)
+            
         })
     })
 }
@@ -195,7 +195,7 @@ const updateTouchpointReciver = () => {
             currentTouchpoint[0].receiver = e.target.value
             e.target.setAttribute('checked', true)
             currentTouchpoint[0].receiverID = e.target.getAttribute('data-id')
-            console.log(touchpoints)
+            // console.log(touchpoints)
         })
     })
 }
@@ -207,7 +207,7 @@ const updateTouchpointChannel = () => {
             const currentTouchpoint = selectedObject(e)
             currentTouchpoint[0].channel = e.target.value
             e.target.querySelector('option').textContent = e.target.value
-            console.log(touchpoints)
+            // console.log(touchpoints)
         })
     })
 }
@@ -218,7 +218,7 @@ const updateTouchpointSenderDescription = () => {
             const currentTouchpoint = selectedObject(e)
             currentTouchpoint[0].senderDescription = e.target.value
             e.target.setAttribute('value',e.target.value)
-            console.log(touchpoints)
+            // console.log(touchpoints)
         })
     })
 }
@@ -227,9 +227,8 @@ const updateTouchpointReceiverDescription = () => {
     inputs.forEach((input) => {
         input.addEventListener('input', (e) => {
             const currentTouchpoint = selectedObject(e)
-            currentTouchpoint[0].receiverDecription = e.target.value
+            currentTouchpoint[0].receiverDescription = e.target.value
             e.target.setAttribute('value',e.target.value)
-            console.log(touchpoints)
         })
     })
 }
@@ -240,7 +239,6 @@ const updateTouchpointTime = () => {
             const currentTouchpoint = selectedObject(e)
             currentTouchpoint[0].time = e.target.value
             e.target.setAttribute('value',e.target.value)
-            console.log(touchpoints)
         })
     })
 }

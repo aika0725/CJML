@@ -1,14 +1,10 @@
-const exportPng = (e)=>{
-    //e.preventDefault()
+const exportPng = ()=>{
     html2canvas(document.querySelector("#capture")).then(canvas => {
-        //document.body.appendChild(canvas)
         exportCanvasAsPNG(canvas) 
     })
-    
-    console.log('sss')
 }
 
-function exportCanvasAsPNG(canvas) {
+const exportCanvasAsPNG = (canvas)=>{
     const imgURL = canvas.toDataURL("image/png")
     let dlLink = document.createElement('a');
     dlLink.download = 'CJML';

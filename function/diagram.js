@@ -3,6 +3,7 @@
 const canvas = document.querySelector('.canvas')
 
 const createSwimlane = () => {
+    sortTouchpoints()
     canvas.innerHTML = ''
     actors.forEach((actor) => {
         canvas.innerHTML += createSwimlaneElement(actor)

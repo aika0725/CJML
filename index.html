@@ -25,7 +25,7 @@
                         data-bs-target="#staticBackdrop" id="start"> Start </button>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" id="export-xml" href="#" >Export XML</a>
+                    <a class="nav-link" id="export-xml" href="#" onclick="exportXML()">Export XML</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="export-xml" href="#" onclick="exportPng(this)">Export PNG</a>
@@ -37,8 +37,6 @@
         </ul>
         <div class="row">
             <div class="canvas" id="capture">
-                111
-                <button onclick="createSwimlane()">+</button>
             </div>
         </div>
         <!-- new model -->
@@ -119,7 +117,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary" onclick="sortTouchpoints()">Submit</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="createSwimlane()">Submit</button>
                     </div>
                 </div>
             </div>
@@ -135,6 +133,7 @@
     <script src="function/diagram.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.0/html2canvas.min.js"></script>
     <script src="function/exportPng.js"></script>
+    <script src="function/exportXML.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
