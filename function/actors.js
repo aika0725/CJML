@@ -51,6 +51,8 @@ const createActorElement = (actor) => {
                     <option value="employee">employee</option>
                     <option value="attacker">attacker</option>
                     <option value="system">system</option>
+                    <option value="bank">bank</option>
+                    <option value="staff-IT">staff-IT</option>
                 </select>
             </div>
         </div>

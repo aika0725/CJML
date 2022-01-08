@@ -101,11 +101,10 @@ svg {
     display: flex;
     word-wrap:break-word;
 }
-
-.swimlane-sender>div>img {
+.channel-img{
     margin: auto;
-    width: 100%;
-    height: auto;
+    width: 35px;
+    height: 35px;
 }
 
 .swimlane-receiver {
@@ -143,6 +142,14 @@ svg {
     
     font-family:Calibri;
     font-size:0.833336em
+}
+
+.actor-img{
+    margin: auto;
+    /* width: 22px;
+    height: 28px; */
+    width: 140%;
+    height: 90%;
 }
 
 .box {
