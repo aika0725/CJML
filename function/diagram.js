@@ -8,7 +8,7 @@ const createSwimlane = () => {
     actors.forEach((actor) => {
         canvas.innerHTML += createSwimlaneElement(actor)
     })
-    replaceBoxes()
+    replaceBoxes()  
 }
 const createSwimlaneElement = (actor) => {
     //image get from function. pass actor.role
@@ -59,6 +59,7 @@ const replaceBoxes = () => {
 
             replacedSender.replaceWith(createSenderBoxes(touchpoint))
             replacedReceiver.replaceWith(createReceiverBoxes(touchpoint))
+            connectBoxes(touchpoint)
         }
     })
 }
@@ -66,6 +67,7 @@ const replaceBoxes = () => {
 const createSenderBoxes = (touchpoint) => {
     const senderBox = document.createElement('div')
     senderBox.className = 'swimlane-sender swimlane-item'
+    senderBox.setAttribute('senderBox-id',touchpoint.id)
 
     const channelImg = document.createElement('div')
     channelImg.className = 'channel-img'
@@ -74,14 +76,18 @@ const createSenderBoxes = (touchpoint) => {
     const communicationContent = document.createElement('div')
     communicationContent.className = 'communication-content'
     communicationContent.textContent = `${touchpoint.senderDescription}`
+// add arrow with senderbox
+    const arrow = createArrowElement(touchpoint)
 
     senderBox.append(channelImg, communicationContent)
+    senderBox.innerHTML+=arrow
     return senderBox
 }
 
 const createReceiverBoxes = (touchpoint) => {
     const receiverBox = document.createElement('div')
     receiverBox.className = 'swimlane-receiver swimlane-item'
+    receiverBox.setAttribute('receiverBox-id',touchpoint.id)
 
     const channelImg = document.createElement('div')
     channelImg.className = 'channel-img'
@@ -89,7 +95,7 @@ const createReceiverBoxes = (touchpoint) => {
     channelImg.innerHTML= getChannelImg(touchpoint)
     const communicationContent = document.createElement('div')
     communicationContent.className = 'communication-content'
-    communicationContent.textContent = `${touchpoint.receiverDecription}`
+    communicationContent.textContent = `${touchpoint.receiverDescription}`
 
     receiverBox.append(channelImg, communicationContent)
     return receiverBox
@@ -152,4 +158,21 @@ const getChannelImg = (touchpoint) =>{
             break
     }
     return img
+}
+
+const createArrowElement = (touchpoint)=>{
+    const arrowElement = `
+    <div class="arrow" arrow-id='${touchpoint.id}'>
+        <div class="arrow-head">
+            <svg width="20px" height="10px">
+                <polygon fill=black stroke-width=0 points="0,10 20,10 10,0" />
+            </svg>
+        </div>
+        <div class="arrow-body">
+            <svg width="30px" height="100%">
+                <path d="m 10 00 V 3000 0" stroke="#000" />
+            </svg>
+        </div>
+    </div>`
+    return arrowElement
 }
