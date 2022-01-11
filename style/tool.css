@@ -82,6 +82,7 @@ justify-content: center;
 }
 .date-explanation {
     transform: scale(0.9);
+    padding: 2px;
     
 }
 
