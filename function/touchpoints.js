@@ -43,6 +43,10 @@ const createTouchpoint = (e) => {
     // new
     updateTouchpointSender()
     updateTouchpointReciver()
+    updateTouchpointChannel()
+    updateTouchpointSenderDescription()
+    updateTouchpointReceiverDescription()
+    updateTouchpointTime()
 }
 
 const createTouchpointElement = (touchpoint) => {
@@ -70,8 +74,12 @@ const createAction = (e) => {
     console.log('create actor list in action')
  
     updateActorList4Action(e)
+
     updateTouchpointSender()
+    updateTouchpointReciver()
+    updateTouchpointChannel()
     updateTouchpointSenderDescription()
+    updateTouchpointReceiverDescription()
     updateTouchpointTime()
 }
 
