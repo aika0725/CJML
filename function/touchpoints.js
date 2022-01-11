@@ -40,6 +40,9 @@ const createTouchpoint = (e) => {
     updateTouchpointTitles()
     getTitleNum(touchpoint)
     createOverview()
+    // new
+    updateTouchpointSender()
+    updateTouchpointReciver()
 }
 
 const createTouchpointElement = (touchpoint) => {
@@ -65,12 +68,16 @@ const createAction = (e) => {
     e.innerHTML += createActionElement();
 
     console.log('create actor list in action')
-    const elementID = e.getAttribute('data-tc')
-    e.firstElementChild.querySelector('.act_list').innerHTML = updateActors2Touchpoint(elementID)
-
+ 
+    updateActorList4Action(e)
     updateTouchpointSender()
     updateTouchpointSenderDescription()
     updateTouchpointTime()
+}
+
+const updateActorList4Action = (e)=>{
+    const elementID = e.getAttribute('data-tc')
+    e.firstElementChild.querySelector('.act_list').innerHTML = updateActors2Touchpoint(elementID)
 }
 
 const createActionElement = () => {
@@ -80,7 +87,7 @@ const createActionElement = () => {
         <p class="touchpoint-subtitle">Action:</p>
         <div class="question-block">
             <p class="question">Who did this action? Please choose the initiator:</p>
-            <div class="act_list senders"></div>
+            <div class="act_list senders actorList"></div>
         </div>
         <div class="question-block">
             <label for="action_date" class="form-label"><span class="question date-question">
@@ -96,21 +103,25 @@ const createActionElement = () => {
 }
 
 const createCommunicationPoint = (e) => {
-    // console.log('Created Comminication')
-    // console.log(e)
+
     e.innerHTML += createCommunicationPointElement();
 
     console.log('create actor list in communication')
-    const elementID = e.getAttribute('data-tc')
-    e.firstElementChild.querySelector('.sender_list').innerHTML = updateActors2Touchpoint(elementID)
-    const elementIdPlus = elementID + 1
-    e.firstElementChild.querySelector('.recevier_list').innerHTML = updateActors2Touchpoint(elementIdPlus)
+
+    updateActorList4Communication(e)
     updateTouchpointSender()
     updateTouchpointReciver()
     updateTouchpointChannel()
     updateTouchpointSenderDescription()
     updateTouchpointReceiverDescription()
     updateTouchpointTime()
+}
+
+const updateActorList4Communication = (e)=>{
+    const elementID = e.getAttribute('data-tc')
+    e.firstElementChild.querySelector('.sender_list').innerHTML = updateActors2Touchpoint(elementID)
+    const elementIdPlus = elementID + 1
+    e.firstElementChild.querySelector('.recevier_list').innerHTML = updateActors2Touchpoint(elementIdPlus)
 }
 
 const createCommunicationPointElement = (touchpoint) => {
@@ -120,7 +131,7 @@ const createCommunicationPointElement = (touchpoint) => {
         <p class="touchpoint-subtitle">Communication Point:</p>
         <div class="question-block">
             <p class="question">Who started this event? Please choose the initiator:</p>
-            <div class="sender_list senders"></div>
+            <div class="sender_list senders actorList"></div>
         </div>
         <div class="question-block">
             <label for="channel" class="form-label"><span class="question">Please choose the communication method.</span></label>
@@ -138,7 +149,7 @@ const createCommunicationPointElement = (touchpoint) => {
         </div>
         <div class="question-block">
             <p class="question">Please choose the other participant (Receiver)</p>
-            <div class="recevier_list receivers"></div>
+            <div class="recevier_list receivers actorList"></div>
         </div>
         <div class="question-block">
             <label for="communication_date" class="form-label"><span class="question date-question">
@@ -206,6 +217,22 @@ const updateActors2Touchpoint = (touchpointId) => {
     })
     return actorList
 }
+// refresh Actor list in touchpoints if user added more actors
+const refreshActors = ()=>{
+    // get all current actorList
+    const actorLists = document.querySelectorAll('.actorList')
+    actorLists.forEach((list)=>{
+        const id = list.closest('.touchpoint-content').getAttribute('data-tc')
+        const idPlus = id+1
+
+        if (list.classList.contains('recevier_list')){
+            list.innerHTML=updateActors2Touchpoint(idPlus)
+        }else{
+            list.innerHTML=updateActors2Touchpoint(id)
+        }
+    })
+
+}
 
 const updateTouchpointSender = () => {
     const inputs = document.querySelectorAll('.senders')
@@ -213,9 +240,13 @@ const updateTouchpointSender = () => {
         input.addEventListener('change', (e) => {
             const currentTouchpoint = selectedObject(e)
             currentTouchpoint[0].sender = e.target.value
+
+            e.target.closest('.actorList').querySelectorAll('.form-check-input').forEach((radio)=>{
+                radio.removeAttribute("checked")
+            })
             e.target.setAttribute('checked', true)
             currentTouchpoint[0].senderID = e.target.getAttribute('data-id')
-            
+            console.log(touchpoints)
         })
     })
 }
@@ -226,9 +257,13 @@ const updateTouchpointReciver = () => {
         input.addEventListener('change', (e) => {
             const currentTouchpoint = selectedObject(e)
             currentTouchpoint[0].receiver = e.target.value
+
+            e.target.closest('.actorList').querySelectorAll('.form-check-input').forEach((radio)=>{
+                radio.removeAttribute("checked")
+            })
             e.target.setAttribute('checked', true)
             currentTouchpoint[0].receiverID = e.target.getAttribute('data-id')
-            // console.log(touchpoints)
+            console.log(touchpoints)
         })
     })
 }
