@@ -32,10 +32,10 @@ const createActor = () => {
 const createActorElement = (actor) => {
     const actorText = `<div class="item" data-id="${actor.id}">
         <div class= "titleActor">
+            <span class="fw-bold actor-title-span">Actor :</span>
             <button type="button" onclick='actorDelBtnHandler(this)' data-id="${actor.id}" class="btn btn-outline-danger btn-sm border delete">
             ${deleteImg}
             </button>
-            <span class="fw-bold actor-title-span">Actor :</span>
         </div>
         <div class="row">
             <div class="col-md-5">

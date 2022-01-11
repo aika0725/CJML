@@ -42,10 +42,10 @@ const createTouchpointElement = (touchpoint) => {
     return (`
     <div class="item" data-id="${touchpoint.id}">
         <div class="touchpoint-title">
+            <span class="fw-bold touchpoint-title-span">Touchpoint:</span>
             <button type="button" onclick='deleteButtonHandler(this)' data-id="${touchpoint.id}" class="btn btn-outline-danger btn-sm border delete">
             ${deleteImg}
             </button>
-            <span class="fw-bold touchpoint-title-span">Touchpoint:</span>
         </div>
         <div class="touchpoint-content" data-tc="${touchpoint.id}"></div>
         <div class="touchpointBtns">
@@ -73,11 +73,20 @@ const createActionElement = () => {
     console.log('Created action element')
     return (
         `<div class="actionContent">
-        Action:<br>Who did this action? Please choose the initiator:<div class="act_list senders"></div>
-        <br>Action Start Time:<br>
-        <input type="datetime-local" class = "form-control date"/><br>
-        <label for="action_des" class="form-label">Please describe this touchpoint within 50 characters.</label>
-        <input type="text" class="form-control sender_des" name="action_des"></input>
+        <p class="touchpoint-subtitle">Action:</p>
+        <div class="question-block">
+            <p class="question">Who did this action? Please choose the initiator:</p>
+            <div class="act_list senders"></div>
+        </div>
+        <div class="question-block">
+            <label for="action_date" class="form-label"><span class="question date-question">
+            Action Start Time:</span>${addDateExplanation()}</label>
+            <input type="datetime-local" name="action_date" class = "form-control date"/>
+        </div>
+        <div class="question-block">
+            <label for="action_des" class="form-label"><span class="question">Please describe this touchpoint within 50 characters.</span></label>
+            <input type="text" class="form-control sender_des" name="action_des"></input>
+        </div>
         </div>`
     )
 }
@@ -100,31 +109,47 @@ const createCommunicationPoint = (e) => {
     updateTouchpointTime()
 }
 
-const createCommunicationPointElement = () => {
+const createCommunicationPointElement = (touchpoint) => {
     console.log('Created communication element')
     return (
-        `<div class="communicationContent">
-    Communication Point:<br>
-    Who started this event? Please choose the initiator:<div class="sender_list senders"></div><br>
-    <label for="channel" class="form-label">Please choose the communication method.</label>
-    <select id="" class="form-select channel" name="channel">
-        <option value="" selected> </option>
-        <option value="SMS">SMS</option>
-        <option value="Email">Email</option>
-        <option value="Telephone conversation">Telephone conversation</option>
-        <option value="Face-to-Face">Face-to-Face</option>
-        <option value="Website">Website</option>
-        <option value="Letter">Letter</option>
-        <option value="Payment">Payment</option>
-        <option value="Self-service machine">Self-service machine</option>
-    </select>
-    Please choose the other participant (Receiver)<br><div class="recevier_list receivers"></div><br>
-    Communication Start Time:<br>
-    <input type="datetime-local" class = "form-control date"/><br>
-    <label for="sender_describe" class="form-label">Please describe senders action within 50 characters.</label>
-    <input type="text" class="form-control sender_des" name="sender_describe">
-    <label for="receiver_describe" class="form-label">Please describe receiver action within 50 characters.</label>
-    <input type="text" class="form-control receiver_des" name="receiver_describe">
+    `<div class="communicationContent">
+        <p class="touchpoint-subtitle">Communication Point:</p>
+        <div class="question-block">
+            <p class="question">Who started this event? Please choose the initiator:</p>
+            <div class="sender_list senders"></div>
+        </div>
+        <div class="question-block">
+            <label for="channel" class="form-label"><span class="question">Please choose the communication method.</span></label>
+            <select id="" class="form-select channel" name="channel">
+                <option value="" selected> </option>
+                <option value="SMS">SMS</option>
+                <option value="Email">Email</option>
+                <option value="Telephone conversation">Telephone conversation</option>
+                <option value="Face-to-Face">Face-to-Face</option>
+                <option value="Website">Website</option>
+                <option value="Letter">Letter</option>
+                <option value="Payment">Payment</option>
+                <option value="Self-service machine">Self-service machine</option>
+            </select>
+        </div>
+        <div class="question-block">
+            <p class="question">Please choose the other participant (Receiver)</p>
+            <div class="recevier_list receivers"></div>
+        </div>
+        <div class="question-block">
+            <label for="communication_date" class="form-label"><span class="question date-question">
+            Communication Start Time:${addDateExplanation()}</span>
+            </label>
+            <input type="datetime-local" name="communication_date" class = "form-control date"/>
+        </div>
+        <div class="question-block">
+            <label for="sender_describe" class="form-label"><span class="question">Please describe senders action within 50 characters.</span></label>
+            <input type="text" class="form-control sender_des" name="sender_describe">
+        </div>
+        <div class="question-block">
+            <label for="receiver_describe" class="form-label"><span class="question">Please describe receiver action within 50 characters.</span></label>
+            <input type="text" class="form-control receiver_des" name="receiver_describe">
+        </div>
     </div>
     `
     )
@@ -249,5 +274,14 @@ const selectedObject = (e) => {
         return touchpoint.id == id
     })
     return currentTouchpoint
+}
+
+
+const addDateExplanation = ()=>{
+    return`
+    <span class="d-inline-block " tabindex="0" data-bs-toggle="tooltip" title="Touchpoints will be sorted by time when the tool generates the diagram">
+    <a class="nav-link date-explanation" disabled>${exclamationMark}</a>
+    </span>
+    `
 }
 
