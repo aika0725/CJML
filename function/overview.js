@@ -9,7 +9,6 @@ const createOverview = ()=>{
     const container = document.querySelector('.bottom-nav')
     container.innerHTML=''
     touchpoints.forEach((touchpoint)=>{
-
         let index = titleNos.indexOf(touchpoint.id)+1
         container.innerHTML+=createOverviewElement(touchpoint,index)
     })

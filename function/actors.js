@@ -39,11 +39,11 @@ const createActorElement = (actor) => {
         </div>
         <div class="row">
             <div class="col-md-5">
-                <label for="inputActor" class="form-label">Name</label>
+                <label for="inputActor" class="form-label"><span class="question">Name</span></label>
                 <input type="text" name="inputActor" class="form-control inputActor" value="${actor.name}">
             </div>
             <div class="col-md-4">
-                <label for="inputRole" class="form-label">Role</label>
+                <label for="inputRole" class="form-label"><span class="question">Role</span></label>
                 <select id="" class="form-select inputRole" name="inputRole">
                     <option value="${actor.role}" selected>${actor.role}</option>
                     <option value="user/customer">user/customer</option>
