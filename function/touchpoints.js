@@ -1,5 +1,5 @@
 let touchpoints = []
-let organizedTouchpoints = []
+let titleNos = []
 const touchpointContainer = document.querySelector('#touchpoint-container')
 
 const updateTouchpointTitles = () => {
@@ -8,9 +8,11 @@ const updateTouchpointTitles = () => {
     touchpointTitles.forEach(title => {
         title.innerText = 'Touchpoint ' + touchpointIndex.toString()
         touchpointIndex++
-    });
+    })
 }
-
+const getTitleNum = (touchpoint)=>{
+    titleNos.push(touchpoint.id)
+}
 
 const createTouchpoint = (e) => {
     //e.preventDefault()
@@ -35,12 +37,14 @@ const createTouchpoint = (e) => {
 
     // Appends Add action and communication points button
     touchpointContainer.innerHTML += (createTouchpointElement(touchpoint))
-    updateTouchpointTitles();
+    updateTouchpointTitles()
+    getTitleNum(touchpoint)
+    createOverview()
 }
 
 const createTouchpointElement = (touchpoint) => {
     return (`
-    <div class="item" data-id="${touchpoint.id}">
+    <div class="item" data-id="${touchpoint.id}" id="${touchpoint.id}">
         <div class="touchpoint-title">
             <span class="fw-bold touchpoint-title-span">Touchpoint:</span>
             <button type="button" onclick='deleteButtonHandler(this)' data-id="${touchpoint.id}" class="btn btn-outline-danger btn-sm border delete">
@@ -184,7 +188,11 @@ const deleteButtonHandler = (e) => {
     })
     e.closest('.item').remove()
     touchpoints = filteredTouchpoints;
-    updateTouchpointTitles();
+    updateTouchpointTitles()
+
+    const indexInTitleNo = titleNos.indexOf(Number(e.getAttribute('data-id')))
+    titleNos.splice(indexInTitleNo, 1)
+    createOverview()
 }
 
 const updateActors2Touchpoint = (touchpointId) => {
@@ -264,6 +272,8 @@ const updateTouchpointTime = () => {
             const currentTouchpoint = selectedObject(e)
             currentTouchpoint[0].time = e.target.value
             e.target.setAttribute('value',e.target.value)
+            sortTouchpoints()
+            createOverview()
         })
     })
 }
