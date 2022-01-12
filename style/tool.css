@@ -240,3 +240,7 @@ justify-content: center;
 .refreshBtn-container{
     margin-top: 15px;
 }
+
+li.page-item {
+    margin: 0px 0.3rem;
+}
