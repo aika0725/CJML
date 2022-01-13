@@ -16,7 +16,35 @@
 
 <body>
     <div class="container">
-        <ul class="navbar nav justify-content-center ">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">C J M L</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item ">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                            data-bs-target="#staticBackdrop" id="start"> Start </button>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="export-xml" href="#" onclick="exportXML()">Export XML</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="export-xml" href="#" onclick="exportPng(this)">Export PNG</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="export-xml" href="#">Help</a>
+                    </li>
+                </ul>
+                <span class="navbar-text">
+                  Navbar text with an inline element
+                </span>
+              </div>
+            </div>
+          </nav>
+        <!-- <ul class="navbar nav justify-content-center ">
             <div class="container-fluid">
                 <li class="nav-item ">
                     <span class="navbar-brand mb-0 h1" id="cjml">CJML</span>
@@ -36,7 +64,7 @@
                     <a class="nav-link" id="export-xml" href="#">Help</a>
                 </li>
             </div>
-        </ul>
+        </ul> -->
         <div class="row">
             <div class="canvas" id="capture">
                 <!-- CANVAS -->
