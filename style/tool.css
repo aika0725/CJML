@@ -243,3 +243,12 @@ justify-content: center;
 li.page-item {
     margin: 0px 0.3rem;
 }
+
+.order-container{
+    justify-content: center;
+
+}
+.nav-order{
+    margin-bottom: 0;
+    
+}

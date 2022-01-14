@@ -18,36 +18,37 @@
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">C J M L</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarText">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item ">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#staticBackdrop" id="start"> Start </button>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="export-xml" href="#" onclick="exportXML()">Export XML</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="export-xml" href="#" onclick="exportPng(this)">Export PNG</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" id="export-xml" href="docs/doc.html" target="_blank">Docs</a>
-                    </li>
-                </ul>
-                <span class="navbar-text">
-                  Navbar text with an inline element
-                </span>
-              </div>
+                <a class="navbar-brand" href="#">C J M L</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+                    aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarText">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item ">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                data-bs-target="#staticBackdrop" id="start"> Start </button>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="export-xml" href="#" onclick="exportXML()">Export XML</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="export-xml" href="#" onclick="exportPng(this)">Export PNG</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="export-xml" href="docs/doc.html" target="_blank">Docs</a>
+                        </li>
+                    </ul>
+                    <span class="navbar-text">
+                        Navbar text with an inline element
+                    </span>
+                </div>
             </div>
-          </nav>
+        </nav>
         <div class="row">
             <div class="canvas" id="capture">
                 <!-- CANVAS -->
-                
+
             </div>
         </div>
         <!-- new model -->
@@ -117,11 +118,15 @@
                             </div>
                             <div class="refreshBtn-container">
 
-                                <span class='refresh-description'>Have added more actors? Click                                 
-                                    <button type="button" class="btn btn-light btn-sm border refresh" onclick="refreshActors()">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-                                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-                                            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                                <span class='refresh-description'>Have added more actors? Click
+                                    <button type="button" class="btn btn-light btn-sm border refresh"
+                                        onclick="refreshActors()">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                            fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                                            <path fill-rule="evenodd"
+                                                d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z" />
+                                            <path
+                                                d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
                                         </svg>
                                     </button>
                                     to refresh the lists.
@@ -140,20 +145,31 @@
                                 </button>
                             </div>
                         </div><br><br>
-                        <div class="item">
+                        <!-- <div class="item">
                             <div>
                                 <span class="overview-title">Touchpoints' order Overview</span>
-                                <p class="light-font">  (Touchpoints will be shown in the following order in diagram - sorted by time)</p>
+                                <p class="light-font"> (Touchpoints will be shown in the following order in diagram -
+                                    sorted by time)</p>
                             </div>
                             <div class="order-container">
                                 <nav>
                                     <ul class="pagination bottom-nav ">
-
+    
                                     </ul>
-                                  </nav>
-                            </div>
-                        </div>
+                                </nav>
+                            </div> 
+                       </div>  -->
+                    </div>
+                    <div class="modal-footer order-container">
+                        <p class="light-font">
+                            Touchpoints's order in diagram - sorted by time :
+                        </p>
+                            <nav >
+                                <ul class="pagination bottom-nav nav-order">
 
+                                </ul>
+                            </nav>
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -165,17 +181,16 @@
         </div>
     </div>
     <!-- Mask layer -->
-    <div class="modal-backdrop fade show" >
-        
+    <div class="modal-backdrop fade show">
+
         <div class="modal-content mask-layer">
             <p class="mask-title">CJML Diagram Generator</p>
             <div class="mask-btn-start">
-                <button class= "btn btn-light mask-btn start-beginning" 
-                data-bs-toggle="modal" data-bs-target="#staticBackdrop"
-                onclick="removeMask()">Start</button>
+                <button class="btn btn-light mask-btn start-beginning" data-bs-toggle="modal"
+                    data-bs-target="#staticBackdrop" onclick="removeMask()">Start</button>
             </div>
-            <button class= "btn mask-btn link-btn" onclick="readDocs()">Read the User Guide</button>
-            <button class= "btn mask-btn link-btn" onclick="readMore()">Learn more about CJML</button>
+            <button class="btn mask-btn link-btn" onclick="readDocs()">Read the User Guide</button>
+            <button class="btn mask-btn link-btn" onclick="readMore()">Learn more about CJML</button>
         </div>
     </div>
 
