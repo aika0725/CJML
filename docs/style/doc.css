@@ -1,0 +1,38 @@
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+
+    }
+}
+
+.img{
+    display: flex;
+  }
+
+.big-pic{
+    width: 70%;
+    height: 70%;
+}
+
+.sub-title{
+    padding-top: 5rem;
+}
+.text-content{
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+.sub-ul{
+    margin-left: 1.5rem;
+}
+.extra-sub-ul{
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+}

@@ -35,7 +35,7 @@
                         <a class="nav-link" id="export-xml" href="#" onclick="exportPng(this)">Export PNG</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="export-xml" href="#">Help</a>
+                        <a class="nav-link" id="export-xml" href="docs/doc.html" target="_blank">Docs</a>
                     </li>
                 </ul>
                 <span class="navbar-text">
@@ -44,27 +44,6 @@
               </div>
             </div>
           </nav>
-        <!-- <ul class="navbar nav justify-content-center ">
-            <div class="container-fluid">
-                <li class="nav-item ">
-                    <span class="navbar-brand mb-0 h1" id="cjml">CJML</span>
-                </li>
-                <li class="nav-item "></li>
-                <li class="nav-item ">
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                        data-bs-target="#staticBackdrop" id="start"> Start </button>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="export-xml" href="#" onclick="exportXML()">Export XML</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="export-xml" href="#" onclick="exportPng(this)">Export PNG</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="export-xml" href="#">Help</a>
-                </li>
-            </div>
-        </ul> -->
         <div class="row">
             <div class="canvas" id="capture">
                 <!-- CANVAS -->
@@ -195,7 +174,8 @@
                 data-bs-toggle="modal" data-bs-target="#staticBackdrop"
                 onclick="removeMask()">Start</button>
             </div>
-            <button class= "btn mask-btn link-btn" onclick="removeMask()">Learn more about CJML</button>
+            <button class= "btn mask-btn link-btn" onclick="readDocs()">Read the User Guide</button>
+            <button class= "btn mask-btn link-btn" onclick="readMore()">Learn more about CJML</button>
         </div>
     </div>
 
