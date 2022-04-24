@@ -117,18 +117,17 @@ const createActionElement = (e) => {
         <div class="question-block">
             <p class="question">(Optional) Is this action a <u>threat</u> or <u>unwanted incident</u>?</p>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="${elementID+2}" id="threat" value="threat">
-                <label class="form-check-label" for="threat">Threat</label>
+                <input class="form-check-input" type="radio" name="${elementID+2}" id="threat${elementID}" value="threat">
+                <label class="form-check-label" for="threat${elementID}">Threat</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="${elementID+2}" id="unwantedIncident" value="unwantedIncident">
-                <label class="form-check-label" for="unwantedIncident">Unwanted Incident</label>
+                <input class="form-check-input" type="radio" name="${elementID+2}" id="unwantedIncident${elementID}" value="unwantedIncident">
+                <label class="form-check-label" for="unwantedIncident${elementID}">Unwanted Incident</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="${elementID+2}" id="none" value="None">
-                <label class="form-check-label" for="none">Neither of them</label>
+                <input class="form-check-input" type="radio" name="${elementID+2}" id="none${elementID}" value="None">
+                <label class="form-check-label" for="none${elementID}">Neither of them</label>
             </div>
-        
         </div>
         </div>`
     )
@@ -136,7 +135,7 @@ const createActionElement = (e) => {
 
 const createCommunicationPoint = (e) => {
 
-    e.innerHTML += createCommunicationPointElement();
+    e.innerHTML += createCommunicationPointElement(e);
 
     console.log('create actor list in communication')
 
@@ -156,8 +155,9 @@ const updateActorList4Communication = (e)=>{
     e.firstElementChild.querySelector('.recevier_list').innerHTML = updateActors2Touchpoint(elementIdPlus)
 }
 
-const createCommunicationPointElement = (touchpoint) => {
+const createCommunicationPointElement = (e) => {
     console.log('Created communication element')
+    const elementID = e.getAttribute('data-tc')
     return (
     `<div class="communicationContent">
         <p class="touchpoint-subtitle">Communication Point:</p>
@@ -192,10 +192,40 @@ const createCommunicationPointElement = (touchpoint) => {
         <div class="question-block">
             <label for="sender_describe" class="form-label"><span class="question">Please describe senders activity within 50 characters.</span></label>
             <input type="text" class="form-control sender_des" name="sender_describe">
+            <div class="question-block">
+                <p class="question">——(Optional) Is sender's activity a <u>threat</u> or <u>unwanted incident</u>?</p>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="${elementID+2}" id="threat${elementID}" value="threat">
+                    <label class="form-check-label" for="threat${elementID}">Threat</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="${elementID+2}" id="unwantedIncident${elementID}" value="unwantedIncident">
+                    <label class="form-check-label" for="unwantedIncident${elementID}">Unwanted Incident</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="${elementID+2}" id="none${elementID}" value="None">
+                    <label class="form-check-label" for="none${elementID}">Neither of them</label>
+                </div>
+            </div>
         </div>
         <div class="question-block">
             <label for="receiver_describe" class="form-label"><span class="question">Please describe receiver activity within 50 characters.</span></label>
             <input type="text" class="form-control receiver_des" name="receiver_describe">
+            <div class="question-block">
+            <p class="question">——(Optional) Is receiver's activity a <u>threat</u> or <u>unwanted incident</u>?</p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="${elementID+3}" id="threat${elementID+4}" value="threat">
+                <label class="form-check-label" for="threat${elementID+4}">Threat</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="${elementID+3}" id="unwantedIncident${elementID+4}" value="unwantedIncident">
+                <label class="form-check-label" for="unwantedIncident${elementID+4}">Unwanted Incident</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="${elementID+3}" id="none${elementID+4}" value="None">
+                <label class="form-check-label" for="none${elementID+4}">Neither of them</label>
+            </div>
+        </div>
         </div>
     </div>
     `
