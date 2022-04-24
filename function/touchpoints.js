@@ -28,11 +28,9 @@ const createTouchpoint = (e) => {
         receiverID:null,
         channel: '',
         senderDescription: '',
-        senderThreat:false,
-        senderIncident:false,
+        senderStatus:'',
         receiverDescription: '',
-        receiverThreat:false,
-        receiverIncident:false,
+        receiverStatus:'',
         time: null
     }
 
@@ -53,6 +51,8 @@ const createTouchpoint = (e) => {
     updateTouchpointSenderDescription()
     updateTouchpointReceiverDescription()
     updateTouchpointTime()
+    updateOptionalStatusSender()
+    updateOptionalStatusReceiver()
 }
 
 const createTouchpointElement = (touchpoint) => {
@@ -87,6 +87,8 @@ const createAction = (e) => {
     updateTouchpointSenderDescription()
     updateTouchpointReceiverDescription()
     updateTouchpointTime()
+    updateOptionalStatusSender()
+    updateOptionalStatusReceiver()
 }
 
 const updateActorList4Action = (e)=>{
@@ -114,7 +116,7 @@ const createActionElement = (e) => {
             <label for="action_des" class="form-label"><span class="question">Please describe this touchpoint within 50 characters.</span></label>
             <input type="text" class="form-control sender_des" name="action_des"></input>
         </div>
-        <div class="question-block">
+        <div class="question-block status_action">
             <p class="question">(Optional) Is this action a <u>threat</u> or <u>unwanted incident</u>?</p>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="${elementID+2}" id="threat${elementID}" value="threat">
@@ -146,6 +148,8 @@ const createCommunicationPoint = (e) => {
     updateTouchpointSenderDescription()
     updateTouchpointReceiverDescription()
     updateTouchpointTime()
+    updateOptionalStatusSender()
+    updateOptionalStatusReceiver()
 }
 
 const updateActorList4Communication = (e)=>{
@@ -189,10 +193,10 @@ const createCommunicationPointElement = (e) => {
             </label>
             <input type="datetime-local" name="communication_date" class = "form-control date"/>
         </div>
-        <div class="question-block">
+        <div class="question-block ">
             <label for="sender_describe" class="form-label"><span class="question">Please describe senders activity within 50 characters.</span></label>
             <input type="text" class="form-control sender_des" name="sender_describe">
-            <div class="question-block">
+            <div class="question-block status_action">
                 <p class="question">——(Optional) Is sender's activity a <u>threat</u> or <u>unwanted incident</u>?</p>
                 <div class="form-check form-check-inline">
                     <input class="form-check-input" type="radio" name="${elementID+2}" id="threat${elementID}" value="threat">
@@ -208,10 +212,10 @@ const createCommunicationPointElement = (e) => {
                 </div>
             </div>
         </div>
-        <div class="question-block">
+        <div class="question-block ">
             <label for="receiver_describe" class="form-label"><span class="question">Please describe receiver activity within 50 characters.</span></label>
             <input type="text" class="form-control receiver_des" name="receiver_describe">
-            <div class="question-block">
+            <div class="question-block status_action_receiver">
             <p class="question">——(Optional) Is receiver's activity a <u>threat</u> or <u>unwanted incident</u>?</p>
             <div class="form-check form-check-inline">
                 <input class="form-check-input" type="radio" name="${elementID+3}" id="threat${elementID+4}" value="threat">
@@ -294,6 +298,41 @@ const refreshActors = ()=>{
         }
     })
 
+}
+
+const updateOptionalStatusSender = ()=>{
+    const inputs = document.querySelectorAll('.status_action')
+    inputs.forEach((input) =>{
+        input.addEventListener('change',(e)=>{
+            const currentTouchpoint = selectedObject(e)
+            currentTouchpoint[0].senderStatus = e.target.value
+
+            e.target.closest('.status_action').querySelectorAll('.form-check-input').forEach((radio)=>{
+                radio.removeAttribute("checked")
+            })
+            e.target.setAttribute('checked', true)
+            console.log(touchpoints)
+
+        })
+    })
+}
+
+//status_action_receiver
+const updateOptionalStatusReceiver =()=>{
+    const inputs = document.querySelectorAll('.status_action_receiver')
+    inputs.forEach((input) =>{
+        input.addEventListener('change',(e)=>{
+            const currentTouchpoint = selectedObject(e)
+            currentTouchpoint[0].receiverStatus = e.target.value
+
+            e.target.closest('.status_action_receiver').querySelectorAll('.form-check-input').forEach((radio)=>{
+                radio.removeAttribute("checked")
+            })
+            e.target.setAttribute('checked', true)
+            console.log(touchpoints)
+
+        })
+    })
 }
 
 const updateTouchpointSender = () => {
