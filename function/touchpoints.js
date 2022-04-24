@@ -121,11 +121,11 @@ const createActionElement = (e) => {
                 <label class="form-check-label" for="threat">Threat</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="${elementID+2} id="unwantedIncident" value="unwantedIncident">
+                <input class="form-check-input" type="radio" name="${elementID+2}" id="unwantedIncident" value="unwantedIncident">
                 <label class="form-check-label" for="unwantedIncident">Unwanted Incident</label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="${elementID+2} id="none" value="None">
+                <input class="form-check-input" type="radio" name="${elementID+2}" id="none" value="None">
                 <label class="form-check-label" for="none">Neither of them</label>
             </div>
         
