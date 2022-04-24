@@ -149,6 +149,7 @@ svg {
     font-size: 0.8em;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .action-content {
@@ -174,6 +175,10 @@ svg {
     /* justify-content: center; */
 }
 
+.swimlane-item {
+    position: relative;
+}
+
 .swimlane-item>.channel-img {
     /* width: 25px; */
     margin-right: 10px;
@@ -182,10 +187,12 @@ svg {
 }
 
 .swimlane-item>.communication-content {
-    width: 100%;
+    width: 130px;
     margin-right: 5px;
     display: flex;
     word-wrap: break-word;
+    left: 48px;
+    position: absolute;
 }
 
 .channel-img {
@@ -283,17 +290,17 @@ li.page-item {
 }
 
 .touchpoint-status-action {
-    position: relative;
-    right: -95px;
-    top: -23px;
-    width: 26%;
+    position: absolute;
+    right: -16px;
+    top: -15px;
+    width: 16%;
 }
 
 .touchpoint-status-communicationpoint {
-    position: relative;
-    right: -148px;
-    top: -23px;
-    width: 36%;
+    position: absolute;
+    right: -16px;
+    top: -15px;
+    width: 16%;
 }
 
 

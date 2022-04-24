@@ -38,9 +38,9 @@ const createTouchpoint = (e) => {
         receiverID: null,
         channel: "",
         senderDescription: "",
-        senderStatus: "",
+        senderStatus: "None",
         receiverDescription: "",
-        receiverStatus: "",
+        receiverStatus: "None",
         time: null,
     };
 
