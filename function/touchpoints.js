@@ -1,3 +1,5 @@
+
+
 let touchpoints = []
 let titleNos = []
 const touchpointContainer = document.querySelector('#touchpoint-container')
@@ -26,7 +28,11 @@ const createTouchpoint = (e) => {
         receiverID:null,
         channel: '',
         senderDescription: '',
+        senderThreat:false,
+        senderIncident:false,
         receiverDescription: '',
+        receiverThreat:false,
+        receiverIncident:false,
         time: null
     }
 
@@ -60,8 +66,8 @@ const createTouchpointElement = (touchpoint) => {
         </div>
         <div class="touchpoint-content" data-tc="${touchpoint.id}"></div>
         <div class="touchpointBtns">
-            <button type="button" onclick='actionButtonHandler(this)' data-id="${touchpoint.id}" class="btn btn-outline-primary actionBtn hide">Add action</button>
-            <button type="button" onclick='communicationButtonHandler(this)' data-id="${touchpoint.id}" class="btn btn-outline-primary communicationBtn hide">Add communication</button>
+            <button type="button" onclick='actionButtonHandler(this)' data-id="${touchpoint.id}" class="btn btn-outline-primary actionBtn hide">Add Action</button>
+            <button type="button" onclick='communicationButtonHandler(this)' data-id="${touchpoint.id}" class="btn btn-outline-primary communicationBtn hide">Add Communication point</button>
         </div>
     </div>`
     )
@@ -69,7 +75,7 @@ const createTouchpointElement = (touchpoint) => {
 
 const createAction = (e) => {
     console.log('Created action')
-    e.innerHTML += createActionElement();
+    e.innerHTML += createActionElement(e);
 
     console.log('create actor list in action')
  
@@ -88,8 +94,10 @@ const updateActorList4Action = (e)=>{
     e.firstElementChild.querySelector('.act_list').innerHTML = updateActors2Touchpoint(elementID)
 }
 
-const createActionElement = () => {
+const createActionElement = (e) => {
     console.log('Created action element')
+    const elementID = e.getAttribute('data-tc')
+    console.log(elementID)
     return (
         `<div class="actionContent">
         <p class="touchpoint-subtitle">Action:</p>
@@ -105,6 +113,22 @@ const createActionElement = () => {
         <div class="question-block">
             <label for="action_des" class="form-label"><span class="question">Please describe this touchpoint within 50 characters.</span></label>
             <input type="text" class="form-control sender_des" name="action_des"></input>
+        </div>
+        <div class="question-block">
+            <p class="question">(Optional) Is this action a <u>threat</u> or <u>unwanted incident</u>?</p>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="${elementID+2}" id="threat" value="threat">
+                <label class="form-check-label" for="threat">Threat</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="${elementID+2} id="unwantedIncident" value="unwantedIncident">
+                <label class="form-check-label" for="unwantedIncident">Unwanted Incident</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="${elementID+2} id="none" value="None">
+                <label class="form-check-label" for="none">Neither of them</label>
+            </div>
+        
         </div>
         </div>`
     )
@@ -166,11 +190,11 @@ const createCommunicationPointElement = (touchpoint) => {
             <input type="datetime-local" name="communication_date" class = "form-control date"/>
         </div>
         <div class="question-block">
-            <label for="sender_describe" class="form-label"><span class="question">Please describe senders action within 50 characters.</span></label>
+            <label for="sender_describe" class="form-label"><span class="question">Please describe senders activity within 50 characters.</span></label>
             <input type="text" class="form-control sender_des" name="sender_describe">
         </div>
         <div class="question-block">
-            <label for="receiver_describe" class="form-label"><span class="question">Please describe receiver action within 50 characters.</span></label>
+            <label for="receiver_describe" class="form-label"><span class="question">Please describe receiver activity within 50 characters.</span></label>
             <input type="text" class="form-control receiver_des" name="receiver_describe">
         </div>
     </div>
@@ -295,6 +319,11 @@ const updateTouchpointSenderDescription = () => {
             currentTouchpoint[0].senderDescription = e.target.value
             e.target.setAttribute('value',e.target.value)
             // console.log(touchpoints)
+            if (e.target.value==''){
+                e.target.classList.add("in-valid")
+            }else {
+                e.target.classList.remove("in-valid")
+            }
         })
     })
 }
@@ -305,6 +334,12 @@ const updateTouchpointReceiverDescription = () => {
             const currentTouchpoint = selectedObject(e)
             currentTouchpoint[0].receiverDescription = e.target.value
             e.target.setAttribute('value',e.target.value)
+
+            if (e.target.value==''){
+                e.target.classList.add("in-valid")
+            }else {
+                e.target.classList.remove("in-valid")
+            }
         })
     })
 }
@@ -338,3 +373,10 @@ const addDateExplanation = ()=>{
     `
 }
 
+const checkTouchpoint = (touchpoint)=>{
+    if (touchpoint.sender ==''){
+        console.log('noooo')
+        return false
+    }
+
+}

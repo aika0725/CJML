@@ -27,7 +27,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item ">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop" id="start"> Start </button>
+                                data-bs-target="#staticBackdrop" id="start"> Start/Edit </button>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" id="export-xml" href="#" onclick="exportXML()">Export XML</a>
@@ -36,11 +36,11 @@
                             <a class="nav-link" id="export-xml" href="#" onclick="exportPng(this)">Export PNG</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" id="export-xml" href="docs/doc.html" target="_blank">Docs</a>
+                            <a class="nav-link" id="export-xml" href="docs/doc.html" target="_blank">User guide</a>
                         </li>
                     </ul>
                     <span class="navbar-text">
-                        Navbar text with an inline element
+                        <!-- Navbar text with an inline element -->
                     </span>
                 </div>
             </div>
@@ -82,13 +82,7 @@
                             <div id="actor-container"></div>
                             <div class="button-add">
                                 <button type="button" class="btn btn-light btn border add" onclick="createActor()">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-plus-square" viewBox="0 0 16 16">
-                                        <path
-                                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                        <path
-                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                    </svg>
+                                    <span class="button-text">Add new actor</span>
                                 </button>
                             </div>
                             <br>
@@ -118,7 +112,7 @@
                             </div>
                             <div class="refreshBtn-container">
 
-                                <span class='refresh-description'>Have added more actors? Click
+                                <span class='refresh-description'>If you did any changes in actors, click
                                     <button type="button" class="btn btn-light btn-sm border refresh"
                                         onclick="refreshActors()">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -128,37 +122,20 @@
                                             <path
                                                 d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z" />
                                         </svg>
+                                        
                                     </button>
                                     to refresh the lists.
                                 </span>
+                                <p ><small><strong>NB: </strong>Please choose your Actors again after refreshing.</small> </p>
                             </div>
                             <div id="touchpoint-container"></div>
                             <div class="button-add">
                                 <button type="button" class="btn btn-light bt border add" onclick="createTouchpoint()">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                        class="bi bi-plus-square" viewBox="0 0 16 16">
-                                        <path
-                                            d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z" />
-                                        <path
-                                            d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
-                                    </svg>
+                                    <span class="button-text">Add new touchpoint</span>
                                 </button>
                             </div>
                         </div><br><br>
-                        <!-- <div class="item">
-                            <div>
-                                <span class="overview-title">Touchpoints' order Overview</span>
-                                <p class="light-font"> (Touchpoints will be shown in the following order in diagram -
-                                    sorted by time)</p>
-                            </div>
-                            <div class="order-container">
-                                <nav>
-                                    <ul class="pagination bottom-nav ">
-    
-                                    </ul>
-                                </nav>
-                            </div> 
-                       </div>  -->
+
                     </div>
                     <div class="modal-footer order-container">
                         <p class="light-font">
@@ -191,6 +168,8 @@
             </div>
             <button class="btn mask-btn link-btn" onclick="readDocs()">Read the User Guide</button>
             <button class="btn mask-btn link-btn" onclick="readMore()">Learn more about CJML</button>
+            <div style="height: 20px;"></div>
+            <p class="" style="font-size: 10px; text-align: center; color: steelblue;">CJML v1.1 by SINTEF Digital is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License.</pclass=mask-btn>
         </div>
     </div>
 

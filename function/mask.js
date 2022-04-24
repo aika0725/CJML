@@ -12,6 +12,6 @@ const readDocs=()=>{
 
 const readMore=()=>{
     removeMask()
-    window.open("https://www.sintef.no/en/expertise/information-and-communication-technology-ict/software-service-and-innovation/user-journeys-and-customer-journey-modeling-language-cjml/", "_blank");
+    window.open("https://www.cjml.no", "_blank");
 }
 

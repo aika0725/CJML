@@ -43,7 +43,7 @@ display: flex;
 justify-content: center;
 }
 .add {
-    width: 100px;
+    width: 150px;
 }
 
 .modal-lg, .modal-xl {
@@ -251,4 +251,12 @@ li.page-item {
 .nav-order{
     margin-bottom: 0;
     
+}
+
+.button-text {
+    font-size:12px;
+}
+
+.in-valid {
+    border-color: red;
 }

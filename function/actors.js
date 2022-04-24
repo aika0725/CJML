@@ -53,6 +53,7 @@ const createActorElement = (actor) => {
                     <option value="system">system</option>
                     <option value="bank">bank</option>
                     <option value="staff-IT">staff-IT</option>
+                    <option value="store">store</option>
                 </select>
             </div>
         </div>
@@ -84,6 +85,11 @@ const updateActorNameOnInput = () => {
             e.target.setAttribute('value',e.target.value)
             currentActor[0].name = e.target.value
             console.log(actors)
+            if (e.target.value==''){
+                e.target.classList.add("in-valid")
+            }else {
+                e.target.classList.remove("in-valid")
+            }
         })
     })
 }
@@ -101,6 +107,11 @@ const updateActorRoleOnInput = () => {
             e.target.querySelector('option').textContent = e.target.value
             currentActor[0].role = e.target.value
             console.log(actors)
+            if (e.target.value==''){
+                e.target.classList.add("in-valid")
+            }else {
+                e.target.classList.remove("in-valid")
+            }
         })
     })
 }

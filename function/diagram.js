@@ -125,6 +125,9 @@ const getActorImg = (actor) =>{
         case 'staff-IT' :
             img = '<img class="actor-img" src="symbols/actors/staff IT.png">'
             break
+        case 'store' :
+            img = '<img class="actor-img" src="symbols/actors/store.png">'
+            break
     }
     return img
 }
@@ -139,7 +142,7 @@ const getChannelImg = (touchpoint) =>{
             img = '<img class="channel-img" src="symbols/channels/email.png">'
             break
         case 'Telephone conversation':
-            img = '<img class="channel-img" src="symbols/channels/telephone.png">'
+            img = '<img class="channel-img" src="symbols/channels/phone.png">'
             break
         case 'Face-to-Face':
             img = '<img class="channel-img" src="symbols/channels/face-to-face.png">'
