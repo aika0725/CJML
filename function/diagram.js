@@ -1,17 +1,34 @@
 // actors for rows
 // touchpoints for boxes
-const canvas = document.querySelector('.canvas')
+const canvas = document.querySelector(".canvas");
+
+const createStatusSymbol = (senderStatusType, touchpointType) =>
+    senderStatusType !== "None"
+        ? `<div class=${
+              touchpointType === TouchpointType.action
+                  ? "touchpoint-status-action"
+                  : "touchpoint-status-communicationpoint"
+          }>
+                <img class="touchpoint-status-img" src="../symbols/elements/${
+                    senderStatusType === senderStatusTypes.unwantedIncident
+                        ? "unwanted-incident"
+                        : "threat"
+                }.png" />
+            </div>`
+        : "";
 
 const createSwimlane = () => {
-    sortTouchpoints()
-    canvas.innerHTML = ''
+    sortTouchpoints();
+    canvas.innerHTML = "";
     actors.forEach((actor) => {
-        canvas.innerHTML += createSwimlaneElement(actor)
-    })
-    replaceBoxes()  
-}
+        canvas.innerHTML += createSwimlaneElement(actor);
+    });
+    replaceBoxes();
+};
+
 const createSwimlaneElement = (actor) => {
     //image get from function. pass actor.role
+    console.log(actor);
     const swimlane = `
     <div class="swimlane-row" data-id = "${actor.id}">
         <div class="swimlane-actor">
@@ -19,151 +36,174 @@ const createSwimlaneElement = (actor) => {
             <div class="actor-name">${actor.name}</div>
         </div>
         ${generateDefaultBoxes()}
-    </div>`
-    return swimlane
-}
+    </div>`;
+    return swimlane;
+};
 
 const createActionBoxes = (touchpoint) => {
-    const actionBox = document.createElement('div')
-    actionBox.className = 'swimlane-action'
-    const actionContent = document.createElement('div')
-    actionContent.className = 'action-content'
-    actionContent.textContent = `${touchpoint.senderDescription}`
-    actionBox.append(actionContent)
-    return actionBox
-}
+    console.log(touchpoint);
+    const actionBox = document.createElement("div");
+    actionBox.innerHTML += createStatusSymbol(
+        touchpoint.senderStatus,
+        touchpoint.type
+    );
+    actionBox.className = "swimlane-action";
+    const actionContent = document.createElement("div");
+    actionContent.className = "action-content";
+    actionContent.textContent = `${touchpoint.senderDescription}`;
+    actionBox.append(actionContent);
+    return actionBox;
+};
 
 const generateDefaultBoxes = () => {
-    let box = ''
+    let box = "";
     touchpoints.forEach((touchpoint) => {
-        console.log('box')
-        box += `<div class="box" box-id="${touchpoint.id}"></div>`
-    })
-    return box
-}
+        console.log("box");
+        box += `<div class="box" box-id="${touchpoint.id}"></div>`;
+    });
+    return box;
+};
 
 const replaceBoxes = () => {
     touchpoints.forEach((touchpoint) => {
-        if (touchpoint.type == 'action') {
-            const rowID = touchpoint.senderID
-            const columnID = touchpoint.id
-            const replacedBox = document.querySelector(`div[data-id='${rowID}'] div[box-id="${columnID}"]`)
+        if (touchpoint.type == TouchpointType.action) {
+            const rowID = touchpoint.senderID;
+            const columnID = touchpoint.id;
+            const replacedBox = document.querySelector(
+                `div[data-id='${rowID}'] div[box-id="${columnID}"]`
+            );
 
-            replacedBox.replaceWith(createActionBoxes(touchpoint))
+            replacedBox.replaceWith(createActionBoxes(touchpoint));
         } else {
-            const rowID_1 = touchpoint.senderID
-            const rowID_2 = touchpoint.receiverID
-            const columnID = touchpoint.id
-            const replacedSender =document.querySelector(`div[data-id='${rowID_1}'] div[box-id="${columnID}"]`)
-            const replacedReceiver = document.querySelector(`div[data-id='${rowID_2}'] div[box-id="${columnID}"]`)
+            const rowID_1 = touchpoint.senderID;
+            const rowID_2 = touchpoint.receiverID;
+            const columnID = touchpoint.id;
+            const replacedSender = document.querySelector(
+                `div[data-id='${rowID_1}'] div[box-id="${columnID}"]`
+            );
+            const replacedReceiver = document.querySelector(
+                `div[data-id='${rowID_2}'] div[box-id="${columnID}"]`
+            );
 
-            replacedSender.replaceWith(createSenderBoxes(touchpoint))
-            replacedReceiver.replaceWith(createReceiverBoxes(touchpoint))
-            connectBoxes(touchpoint)
+            replacedSender.replaceWith(createSenderBoxes(touchpoint));
+            replacedReceiver.replaceWith(createReceiverBoxes(touchpoint));
+            connectBoxes(touchpoint);
         }
-    })
-}
+    });
+};
 
 const createSenderBoxes = (touchpoint) => {
-    const senderBox = document.createElement('div')
-    senderBox.className = 'swimlane-sender swimlane-item'
-    senderBox.setAttribute('senderBox-id',touchpoint.id)
+    const senderBox = document.createElement("div");
+    senderBox.className = "swimlane-sender swimlane-item";
+    senderBox.setAttribute("senderBox-id", touchpoint.id);
+    senderBox.innerHTML += createStatusSymbol(
+        touchpoint.senderStatus,
+        touchpoint.type
+    );
+    const channelImg = document.createElement("div");
+    channelImg.className = "channel-img";
+    // insert channel pic
+    channelImg.innerHTML = getChannelImg(touchpoint);
+    const communicationContent = document.createElement("div");
+    communicationContent.className = "communication-content";
+    communicationContent.textContent = `${touchpoint.senderDescription}`;
+    // add arrow with senderbox
+    const arrow = createArrowElement(touchpoint);
 
-    const channelImg = document.createElement('div')
-    channelImg.className = 'channel-img'
-// insert channel pic
-    channelImg.innerHTML= getChannelImg(touchpoint)
-    const communicationContent = document.createElement('div')
-    communicationContent.className = 'communication-content'
-    communicationContent.textContent = `${touchpoint.senderDescription}`
-// add arrow with senderbox
-    const arrow = createArrowElement(touchpoint)
-
-    senderBox.append(channelImg, communicationContent)
-    senderBox.innerHTML+=arrow
-    return senderBox
-}
+    senderBox.append(channelImg, communicationContent);
+    senderBox.innerHTML += arrow;
+    return senderBox;
+};
 
 const createReceiverBoxes = (touchpoint) => {
-    const receiverBox = document.createElement('div')
-    receiverBox.className = 'swimlane-receiver swimlane-item'
-    receiverBox.setAttribute('receiverBox-id',touchpoint.id)
+    const receiverBox = document.createElement("div");
+    receiverBox.className = "swimlane-receiver swimlane-item";
+    receiverBox.setAttribute("receiverBox-id", touchpoint.id);
+    receiverBox.innerHTML = createStatusSymbol(
+        touchpoint.receiverStatus,
+        touchpoint.type
+    );
 
-    const channelImg = document.createElement('div')
-    channelImg.className = 'channel-img'
-// insert channel pic
-    channelImg.innerHTML= getChannelImg(touchpoint)
-    const communicationContent = document.createElement('div')
-    communicationContent.className = 'communication-content'
-    communicationContent.textContent = `${touchpoint.receiverDescription}`
+    const channelImg = document.createElement("div");
+    channelImg.className = "channel-img";
+    // insert channel pic
+    channelImg.innerHTML = getChannelImg(touchpoint);
+    const communicationContent = document.createElement("div");
+    communicationContent.className = "communication-content";
+    communicationContent.textContent = `${touchpoint.receiverDescription}`;
 
-    receiverBox.append(channelImg, communicationContent)
-    return receiverBox
-}
+    receiverBox.append(channelImg, communicationContent);
+    return receiverBox;
+};
 
-const getActorImg = (actor) =>{
-    let img
+const getActorImg = (actor) => {
+    let img;
     switch (actor.role) {
-        case 'user/customer':
-            img = '<img class="actor-img" src="symbols/actors/user-4.png">'
-            break
-        case 'service provider':
-            img = '<img class="actor-img" src="symbols/actors/service-provider-4.png">'
-            break
-        case 'employee':
-            img = '<img class="actor-img" src="symbols/actors/employee-4.png">'
-            break
-        case 'attacker':
-            img = '<img class="actor-img" src="symbols/actors/attacker.png">'
-            break
-        case 'system':
-            img = '<img class="actor-img" src="symbols/actors/datasystem.png">'
-            break
-        case 'bank' :
-            img = '<img class="actor-img" src="symbols/actors/bank-4.png">'
-            break
-        case 'staff-IT' :
-            img = '<img class="actor-img" src="symbols/actors/staff IT.png">'
-            break
-        case 'store' :
-            img = '<img class="actor-img" src="symbols/actors/store.png">'
-            break
+        case "user/customer":
+            img = '<img class="actor-img" src="symbols/actors/user-4.png">';
+            break;
+        case "service provider":
+            img =
+                '<img class="actor-img" src="symbols/actors/service-provider-4.png">';
+            break;
+        case "employee":
+            img = '<img class="actor-img" src="symbols/actors/employee-4.png">';
+            break;
+        case "attacker":
+            img = '<img class="actor-img" src="symbols/actors/attacker.png">';
+            break;
+        case "system":
+            img = '<img class="actor-img" src="symbols/actors/datasystem.png">';
+            break;
+        case "bank":
+            img = '<img class="actor-img" src="symbols/actors/bank-4.png">';
+            break;
+        case "staff-IT":
+            img = '<img class="actor-img" src="symbols/actors/staff IT.png">';
+            break;
+        case "store":
+            img = '<img class="actor-img" src="symbols/actors/store.png">';
+            break;
     }
-    return img
-}
+    return img;
+};
 
-const getChannelImg = (touchpoint) =>{
-    let img
+const getChannelImg = (touchpoint) => {
+    let img;
     switch (touchpoint.channel) {
-        case 'SMS':
-            img = '<img class="channel-img" src="symbols/channels/sms.png">'
-            break
-        case 'Email':
-            img = '<img class="channel-img" src="symbols/channels/email.png">'
-            break
-        case 'Telephone conversation':
-            img = '<img class="channel-img" src="symbols/channels/phone.png">'
-            break
-        case 'Face-to-Face':
-            img = '<img class="channel-img" src="symbols/channels/face-to-face.png">'
-            break
-        case 'Website':
-            img = '<img class="channel-img" src="symbols/channels/internet.png">'
-            break
-        case 'Letter':
-            img = '<img class="channel-img" src="symbols/channels/letter.png">'
-            break
-        case 'Payment':
-            img = '<img class="channel-img" src="symbols/channels/payment.png">'
-            break
-        case 'Self-service machine':
-            img = '<img class="channel-img" src="symbols/channels/self-service machine.png">'
-            break
+        case "SMS":
+            img = '<img class="channel-img" src="symbols/channels/sms.png">';
+            break;
+        case "Email":
+            img = '<img class="channel-img" src="symbols/channels/email.png">';
+            break;
+        case "Telephone conversation":
+            img = '<img class="channel-img" src="symbols/channels/phone.png">';
+            break;
+        case "Face-to-Face":
+            img =
+                '<img class="channel-img" src="symbols/channels/face-to-face.png">';
+            break;
+        case "Website":
+            img =
+                '<img class="channel-img" src="symbols/channels/internet.png">';
+            break;
+        case "Letter":
+            img = '<img class="channel-img" src="symbols/channels/letter.png">';
+            break;
+        case "Payment":
+            img =
+                '<img class="channel-img" src="symbols/channels/payment.png">';
+            break;
+        case "Self-service machine":
+            img =
+                '<img class="channel-img" src="symbols/channels/self-service machine.png">';
+            break;
     }
-    return img
-}
+    return img;
+};
 
-const createArrowElement = (touchpoint)=>{
+const createArrowElement = (touchpoint) => {
     const arrowElement = `
     <div class="arrow" arrow-id='${touchpoint.id}'>
         <div class="arrow-head">
@@ -176,6 +216,6 @@ const createArrowElement = (touchpoint)=>{
                 <path d="m 10 00 V 3000 0" stroke="#000" />
             </svg>
         </div>
-    </div>`
-    return arrowElement
-}
+    </div>`;
+    return arrowElement;
+};

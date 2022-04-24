@@ -116,368 +116,321 @@
 
     <!-- main -->
 
-    <div class="container" style="margin-right: 10rem;">
-        <ul class="list-unstyled ps-0">
+    <div class="container" style="margin-right: auto; max-width: 840px;">
+        <h1>CJML diagram generator User Guide</h1>
+        <section id="overview">
+            <h2>Customer Journey Modelling Language (CJML)</h2>
+            <p>
+                CJML is a formal language for specification and visualization
+                of customer journeys and service processes. It is
+                centred around humans and human activities, regardless
+                of their role being a customer, user, citizen, consumer, patient,
+                or employee…
+            </p>
+            <p>Customer journeys are modelled as sequences or constellations of
+                touchpoints for acustomer to achieve a specific goal or outcome.
+            </p>
+        </section>
+        <section id="swimlane">
+            <h2>Swimlane diagram – basic elements</h2>
+            <div class="image-container">
+                <img class="img-fluid img-thumbnail big-pic" src="image/swimlane.png" alt="">
+            </div>
+        </section>
+        <section id="actor">
+            <h3>Actor</h3>
+            <p>
+                Actors are people who played an important role in your customer journey.
+                All the actors involved in the journey
+                has a separate swimlane. Actor could be a customer, user, citizen,
+                consumer, patient, employee,attacker, system…
+            </p>
+        </section>
+        <section id="action">
+            <h2>Touchpoints</h2>
+            <h3>Action</h3>
+            <p>
+                Actions are non-communicative events or activities conducted by
+                an actor as part of a customer journey
+            </p>
+            <p>For exapmle, in a scenario that customer wants to buy a pizza in the store,
+                then 'reading menu and chooseing pizza' is customer's action. </p>
+            <div class="image-container text-center">
+                <img class="img-fluid img-thumbnail" src="image/action.png" alt="">
+            </div>
+            <h3>Communication Point</h3>
+            <p>
+                Communication points are instances of communication or interaction between,
+                for example, a user and a service provider
+            </p>
+            <p>
+                Communication points forms "the backbone" of a customer journey,
+                and they are associated with
+            <ul class="list-unstyled list-group-numbered sub-ul">
+                <li>a sender</li>
+                <li>a receiver</li>
+                <li>a communication channel</li>
+            </ul>
+            </p>
+            <p>
+                For example, customer 'paying for the pizza' is an interaction with cashier in the pizza store, the
+                cashier
+                'receiving customer's payment'. They might not have any conversation but this 'payment activity'
+                needs two
+                actors to be done in the in-store pizza purchasing scenario.
+            </p>
+            <div class="image-container text-center">
+                <img class="img-fluid img-thumbnail " src="image/communication.png" alt="">
+            </div>
+            <p>
+                A communication point has a sender and a receiver that must be positioned
+                in the corresponding swimlanes of the actors.
+            </p>
+        </section>
+        <section id="step-one">
+            <h2>Tool</h2>
+            <h3>Overview</h3>
+            <p>
+                CJML diagram generator is a tool for users to make CJML swimlane diarams
+                by only filling in a simple form.
+            </p>
+            <div class="image-container">
+                <img class="img-fluid img-thumbnail" src="image/overview.png" alt="">
+            </div>
+        </section>
+        <section id="step-two">
+            <h3>Form</h3>
+            <p>
+                [<strong>'Time' in the form is not required</strong> and the touchpoints will be sorted by time only
+                after you filled in all touchpoints start time]
+            </p>
+            <p>
+            <h5><strong>Actor</strong></h5>
+            <br>The first step of filling in this form is to find out how many participants (Actors) in your
+            customer journey
+            </p>
+            <div class="image-container">
+                <img class="img-fluid img-thumbnail big-pic" src="image/form-actor.png" alt="">
+            </div>
+            <p>
+            <h5><strong>Touchpoint</strong></h5>
+            <br>After finishing adding all actors information, add some touchpoints to describe your scenario.
+            </p>
+            <div class="image-container">
+                <img class="img-fluid img-thumbnail big-pic" src="image/form-tp1.png" alt="">
+            </div>
+            <p>
+                <strong>Action</strong>
+            </p>
+            <div class="image-container">
+                <img class="img-fluid img-thumbnail big-pic" src="image/form-action.png" alt="">
+            </div>
+            <p>
+                <strong>Communication Point</strong>
+            </p>
+            <div class="image-container">
+                <img class="img-fluid img-thumbnail big-pic" src="image/form-com.png" alt="">
+            </div>
+            <p>
 
-            <li class="mb-1">
-                <h1 class="main-title">CJML diagram generator User Guide</h1>
-            </li>
+            </p>
+        </section>
 
-            <li class="mb-1">
-                <section id="overview">
-                    <h2 class="sub-title">Customer Journey Modelling Language (CJML)</h2>
-                    <p class="text-content">
-                        CJML is a formal language for specification and visualization
-                        of customer journeys and service processes. It is
-                        centred around humans and human activities, regardless
-                        of their role being a customer, user, citizen, consumer, patient,
-                        or employee…
-                    </p>
-                    <p class="text-content">Customer journeys are modelled as sequences or constellations of
-                        touchpoints for acustomer to achieve a specific goal or outcome.
-                    </p>
-                </section>
-            </li>
-
-            <li class="mb-1">
-                <section id="swimlane">
-                    <h1 class="main-title">Swimlane diagram – basic elements</h1>
-                    <div class="img">
-                        <img class="img-fluid img-thumbnail big-pic" src="image/swimlane.png" alt="">
-                    </div>
-                </section>
-            </li>
-
-            <li class="mb-1">
-                <section id="actor">
-                    <h2 class="sub-title">Actor</h2>
-                    <p class="text-content">
-                        Actors are people who played an important role in your customer journey.
-                        All the actors involved in the journey
-                        has a separate swimlane. Actor could be a customer, user, citizen,
-                        consumer, patient, employee,attacker, system…
-                    </p>
-                    <div class="image-container">
-                        <img class="img-fluid img-thumbnail" src="image/???" alt="">
-                    </div>
-                </section>
-            </li>
-
-            <li class="mb-1">
-                <h1 class="main-title">Touchpoints</h1>
-            </li>
-
-            <li class="mb-1">
-                <section id="action">
-                    <h2 class="sub-title">Action</h2>
-                    <p class="text-content">
-                        Actions are non-communicative events or activities conducted by
-                        an actor as part of a customer journey
-                    </p>
-                    <p class="text-content">For exapmle, in a scenario that customer wants to buy a pizza in the store, 
-                        then 'reading menu and chooseing pizza' is customer's action. </p>
-                    <div class="image-container text-center">
-                        <img class="img-fluid img-thumbnail" src="image/action.png" alt="">
-                    </div>
-                </section>
-            </li>
-
-            <li class="mb-1">
-                <section id="communication">
-                    <h2 class="sub-title">Communication Point</h2>
-                    <p class="text-content">
-                        Communication points are instances of communication or interaction between,
-                        for example, a user and a service provider
-                    </p>
-                    <p class="text-content">
-                        Communication points forms "the backbone" of a customer journey,
-                        and they are associated with
-                    <ul class="list-unstyled list-group-numbered sub-ul">
-                        <li>a sender</li>
-                        <li>a receiver</li>
-                        <li>a communication channel</li>
-                    </ul>
-                    </p>
-                    <p class="text-content">
-                        For example, customer 'paying for the pizza' is an interaction with cashier in the pizza store, the cashier 
-                        'receiving customer's payment'. They might not have any conversation but this 'payment activity' needs two 
-                        actors to be done in the in-store pizza purchasing scenario.
-                    </p>
-                    <div class="image-container text-center">
-                        <img class="img-fluid img-thumbnail " src="image/communication.png" alt="">
-                    </div>
-                    <p class="text-content">
-                        A communication point has a sender and a receiver that must be positioned
-                        in the corresponding swimlanes of the actors.
-                    </p>
-                </section>
-            </li>
-            <!-- ------------- -->
-            <li class="mb-1">
-                <h1 class="main-title">Tool</h1>
-            </li>
-
-            <li class="mb-1">
-                <section id="step-one">
-                    <h2 class="sub-title">Overview</h2>
-                    <p class="text-content">
-                        CJML diagram generator is a tool for users to make CJML swimlane diarams
-                        by only filling in a simple form.
-                    </p>
-                    <div class="image-container">
-                        <img class="img-fluid img-thumbnail" src="image/overview.png" alt="">
-                    </div>
-                </section>
-            </li>
-            <li class="mb-1">
-                <section id="step-two">
-                    <h2 class="sub-title">Form</h2>
-                    <p class="text-content">
-                        [<strong>'Time' in the form is not required</strong> and the touchpoints will be sorted by time only after you filled in all touchpoints start time]
-                    </p>
-                    <p class="text-content">
-                    <h5><strong>Actor</strong></h5>
-                    <br>The first step of filling in this form is to find out how many participants (Actors) in your
-                    customer journey
-                    </p>
-                    <div class="image-container">
-                        <img class="img-fluid img-thumbnail big-pic" src="image/form-actor.png" alt="">
-                    </div>
-                    <p class="text-content">
-                    <h5><strong>Touchpoint</strong></h5>
-                    <br>After finishing adding all actors information, add some touchpoints to describe your scenario.
-                    </p>
-                    <div class="image-container">
-                        <img class="img-fluid img-thumbnail big-pic" src="image/form-tp1.png" alt="">
-                    </div>
-                    <p class="text-content">
-                        <strong>Action</strong>
-                    </p>
-                    <div class="image-container">
-                        <img class="img-fluid img-thumbnail big-pic" src="image/form-action.png" alt="">
-                    </div>
-                    <p class="text-content">
-                        <strong>Communication Point</strong>
-                    </p>
-                    <div class="image-container">
-                        <img class="img-fluid img-thumbnail big-pic" src="image/form-com.png" alt="">
-                    </div>
-                    <p class="text-content">
-
-                    </p>
-                </section>
-            </li>
-            <!-- ------------- -->
-            <li class="mb-1">
-                <h1 class="main-title">Examples</h1>
-            </li>
-
-            <li class="mb-1">
-                <section id="example-one">
-                    <h2 class="sub-title">Example:Ordering Pizza</h2>
-                    <p class="text-content">
-                        <strong>Scenario:</strong>
-                        You chose a restaurant, made an order and paid for it in the food app. After the restaurant received and confirmed your order by the app, you received a receipt and a confirmation SMS from the restaurant. The restaurant started making your pizza after they received your order. when the pizza was ready, they informed and waited for the delivery person to pick up the pizza. The delivery person picked up the pizza and then delivered it to you.
-                    </p>
-                    <div class="image-container">
-                        <img class="img-fluid img-thumbnail" src="image/example1.png" alt="">
-                    </div>
-                </section>
-            </li>
-            <li class="mb-1">
-                <section id="example-two">
-                    <h2 class="sub-title">Example:Phishing attack</h2>
-                    <p class="text-content">
-                        <strong>Scenario:</strong>
-                        A SME is exposed to a phishing attack. Several employees receive an e-mail
-                        asking them to log on to the company intranet.
-                        It turns out to be a fake intranet site. Now, one of the employees logs in
-                        and the hacker thus can access her login credentials.
-                        The employee do suspect that something went wrong and decides to alert the
-                        security team.
-                    </p>
-                    <div class="image-container">
-                        <img class="img-fluid img-thumbnail" src="image/example2.png" alt="">
-                    </div>
-                </section>
-            </li>
-            <!-- ------------- -->
-            <li class="mb-1">
-                <h1 class="main-title">Extra-Info</h1>
-            </li>
-            <li class="mb-1">
-                <section id="extra-one">
-                    <h2 class="sub-title">How to describe your own scenario</h2>
-                    <ul class="list-unstyled list-group-numbered extra-sub-ul">
-                        <li class="li-container">
-                            <span class="li-title">
-                                Start by describing a scenario (textual) and how it develops over time
-                            </span>
-                            <ul class="list-unstyled  sub-ul extra-sub-ul">
-                                <li> Who (which actors) are involved? </li>
-                                <li>How do they communicate? </li>
-                                <li>What important steps are involved?</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="li-title">
-                                Identify the communication points among the actors and their essential attributes
-                            </span>
-                            <ul class="list-unstyled  sub-ul extra-sub-ul">
-                                <li>Who is the initiator/sender? </li>
-                                <li>Who is the receiver? </li>
-                                <li>Which communication channel is used?</li>
-                                <li>When do the communication take place?</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="li-title">
-                                Identify important actions (non-communicating events).
-                            </span>
-                            <ul class="list-unstyled  sub-ul extra-sub-ul">
-                                <li> Which actions are essential for the scenario? </li>
-                                <li>Who are responsible for these actions? </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="li-title">
-                                Describe chronologically what happens over time.
-                            </span>
-                        </li>
-                    </ul>
-                </section>
-            </li>
-
-            <li class="mb-1">
-                <section id="extra-two">
-                    <h2 class="sub-title">Delineation of steps</h2>
-                    <p class="text-content">
-                        All service processes involve a number of steps,
-                        and it is not always easy to determine what are individual steps and how the delineation should
-                        be.
-                    </p>
-                    <p class="text-content">
-                        The general rule is that the process should be divided into touchpoints carrying
-                        "the smallest unit of meaningful content" considering the purpose of the mapping.
-                    </p>
-                    <p class="text-content">
-                        Another general rule is that when the communication channel change, a new step begins.
-                    </p>
-                    <p class="text-content">
-                        The description of a step is always a simplification. To illustrate this, when making a pone
-                        call
-                        there is a number of steps that are not necessary to describe, e.g. "holding the phone to the
-                        ear".
-                    </p>
-                    <p class="text-content">
-                        Delineation of steps must always be seen in relation to relevance. The steps "dialling the
-                        telephone number" is
-                        usually not important to include. But in a process map for emergency routines, this step might
-                        be essential.
-                    </p>
-
-                    <ul class="list-unstyled extra-sub-ul">
-                        <li class="li-container">
-                            <span class="li-title">
-                                <strong>Example of division:</strong>
-                                Online shopping can be divided as follows:
-                            </span>
-                            <ul class="list-unstyled  sub-ul extra-sub-ul">
-                                <li>• Browse the products and assortment </li>
-                                <li>• Add product to shopping cart </li>
-                                <li>• Look through the order and pay</li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="li-title">
-                                <strong>Example of delineation:</strong>
-                                A visit to the doctor includes many actions.
-                            </span>
-                            <p>
-                                <span class="li-sub-title">
-                                    Steps that are essential:
-                                </span>
-                            </p>
-                            <ul class="list-unstyled  sub-ul extra-sub-ul">
-                                <li>• The doctor's examination of patient </li>
-                                <li>• The doctor's decision about further treatment </li>
-                            </ul>
-
-                            <span class="li-sub-title">
-                                Steps that <em>may be </em>important:
-                            </span>
-                            <ul class="list-unstyled  sub-ul extra-sub-ul">
-                                <li>• Register at the reception (some might have systems that notifies the doctor about
-                                    arrival)</li>
-                                <li>• Payment and check-out</li>
-                                <li>• The time spent in the waiting room</li>
-                            </ul>
-
-                            <span class="li-sub-title">
-                                Steps that are not important:
-                            </span>
-                            <ul class="list-unstyled  sub-ul extra-sub-ul">
-                                <li>• Leave home and take the bus to the doctort </li>
-                                <li>• Hang the jacket in the wardrobe at the doctor's waiting room </li>
-                            </ul>
-                        </li>
-                        <li>
-                            <span class="li-title">
-                                Identify important actions (non-communicating events).
-                            </span>
-                            <ul class="list-unstyled  sub-ul extra-sub-ul">
-                                <li> Which actions are essential for the scenario? </li>
-                                <li>Who are responsible for these actions? </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </section>
-            </li>
-
-            <li class="mb-1">
-                <section id="extra-three">
-                    <h2 class="sub-title">Communication point or action?</h2>
-                    <p class="text-content">
-                        Communication, as it is defined in CJML, requires that a sender sends
-                        a message directed towards a defined actor in a specific context.
-                    </p>
-                    <p class="text-content">
-                        Note that acquisition of information (perception and cognition) is
-                        not defined as communication in CJML unless the information is communicated
-                        actively to an intended receiver and in the context of a journey.
-                    </p>
-                    <p class="text-content">
-                        <u>Example 1:</u> John is reading the electricity meter and
-                        writes down the number on a piece of paper.<br>
-                        This step is an action, as John has not yet communicated the number to anyone.
-                    </p>
-                    <p class="text-content">
-                        <u>Example 2:</u> John sends the meter reading to the utility company through an SMS.
-                        <br>This step is definitely a communication point,
-                        as the message is actively sent to an intended receiver.
-                    </p>
-
-                    <p class="text-content">
-                        <u>Other examples:</u>
-                        <br><strong>Example of touchpoints that involve direct communication:</strong>
+        <section id="example-one">
+            <h2>Examples</h2>
+            <h3>Example:Ordering Pizza</h3>
+            <p>
+                <strong>Scenario:</strong>
+                You chose a restaurant, made an order and paid for it in the food app. After the restaurant received
+                and confirmed your order by the app, you received a receipt and a confirmation SMS from the
+                restaurant. The restaurant started making your pizza after they received your order. when the pizza
+                was ready, they informed and waited for the delivery person to pick up the pizza. The delivery
+                person picked up the pizza and then delivered it to you.
+            </p>
+            <div class="image-container">
+                <img class="img-fluid img-thumbnail" src="image/example1.png" alt="">
+            </div>
+        </section>
+        <section id="example-two">
+            <h3>Example:Phishing attack</h3>
+            <p>
+                <strong>Scenario:</strong>
+                A SME is exposed to a phishing attack. Several employees receive an e-mail
+                asking them to log on to the company intranet.
+                It turns out to be a fake intranet site. Now, one of the employees logs in
+                and the hacker thus can access her login credentials.
+                The employee do suspect that something went wrong and decides to alert the
+                security team.
+            </p>
+            <div class="image-container">
+                <img class="img-fluid img-thumbnail" src="image/example2.png" alt="">
+            </div>
+        </section>
+        <section id="extra-one">
+            <h2>Extra-Info</h2>
+            <h3>How to describe your own scenario</h3>
+            <ul class="list-unstyled list-group-numbered extra-sub-ul">
+                <li class="li-container">
+                    <span class="li-title">
+                        Start by describing a scenario (textual) and how it develops over time
+                    </span>
                     <ul class="list-unstyled  sub-ul extra-sub-ul">
-                        <li>• A patient has a telephone conversation with the doctor. </li>
-                        <li>• The doctor receives an epicrisis from the specialist.</li>
-                        <li>• A patient receives a SMS reminder about the upcoming appointment with the doctor.</li>
+                        <li> Who (which actors) are involved? </li>
+                        <li>How do they communicate? </li>
+                        <li>What important steps are involved?</li>
                     </ul>
-                    </p>
-                    <p class="text-content">
-                        <br><strong>Example of touchpoints that are not defined as direct communication: </strong>
+                </li>
+                <li>
+                    <span class="li-title">
+                        Identify the communication points among the actors and their essential attributes
+                    </span>
                     <ul class="list-unstyled  sub-ul extra-sub-ul">
-                        <li>• Writing down questions before a visit to the doctor. </li>
-                        <li>• Reading an information brochure at the doctor's waiting room.</li>
-                        <li>• Looking at the map of the hospital area to find the right building.</li>
+                        <li>Who is the initiator/sender? </li>
+                        <li>Who is the receiver? </li>
+                        <li>Which communication channel is used?</li>
+                        <li>When do the communication take place?</li>
                     </ul>
+                </li>
+                <li>
+                    <span class="li-title">
+                        Identify important actions (non-communicating events).
+                    </span>
+                    <ul class="list-unstyled  sub-ul extra-sub-ul">
+                        <li> Which actions are essential for the scenario? </li>
+                        <li>Who are responsible for these actions? </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="li-title">
+                        Describe chronologically what happens over time.
+                    </span>
+                </li>
+            </ul>
+        </section>
+        <section id="extra-two">
+            <h3>Delineation of steps</h3>
+            <p>
+                All service processes involve a number of steps,
+                and it is not always easy to determine what are individual steps and how the delineation should
+                be.
+            </p>
+            <p>
+                The general rule is that the process should be divided into touchpoints carrying
+                "the smallest unit of meaningful content" considering the purpose of the mapping.
+            </p>
+            <p>
+                Another general rule is that when the communication channel change, a new step begins.
+            </p>
+            <p>
+                The description of a step is always a simplification. To illustrate this, when making a pone
+                call
+                there is a number of steps that are not necessary to describe, e.g. "holding the phone to the
+                ear".
+            </p>
+            <p>
+                Delineation of steps must always be seen in relation to relevance. The steps "dialling the
+                telephone number" is
+                usually not important to include. But in a process map for emergency routines, this step might
+                be essential.
+            </p>
+
+            <ul class="list-unstyled extra-sub-ul">
+                <li class="li-container">
+                    <span class="li-title">
+                        <strong>Example of division:</strong>
+                        Online shopping can be divided as follows:
+                    </span>
+                    <ul class="list-unstyled  sub-ul extra-sub-ul">
+                        <li>• Browse the products and assortment </li>
+                        <li>• Add product to shopping cart </li>
+                        <li>• Look through the order and pay</li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="li-title">
+                        <strong>Example of delineation:</strong>
+                        A visit to the doctor includes many actions.
+                    </span>
+                    <p>
+                        <span class="li-sub-title">
+                            Steps that are essential:
+                        </span>
                     </p>
-                </section>
-            </li>
-            <div style="height: 3rem;"></div>
-        </ul>
+                    <ul class="list-unstyled  sub-ul extra-sub-ul">
+                        <li>• The doctor's examination of patient </li>
+                        <li>• The doctor's decision about further treatment </li>
+                    </ul>
+
+                    <span class="li-sub-title">
+                        Steps that <em>may be </em>important:
+                    </span>
+                    <ul class="list-unstyled  sub-ul extra-sub-ul">
+                        <li>• Register at the reception (some might have systems that notifies the doctor about
+                            arrival)</li>
+                        <li>• Payment and check-out</li>
+                        <li>• The time spent in the waiting room</li>
+                    </ul>
+
+                    <span class="li-sub-title">
+                        Steps that are not important:
+                    </span>
+                    <ul class="list-unstyled  sub-ul extra-sub-ul">
+                        <li>• Leave home and take the bus to the doctort </li>
+                        <li>• Hang the jacket in the wardrobe at the doctor's waiting room </li>
+                    </ul>
+                </li>
+                <li>
+                    <span class="li-title">
+                        Identify important actions (non-communicating events).
+                    </span>
+                    <ul class="list-unstyled  sub-ul extra-sub-ul">
+                        <li> Which actions are essential for the scenario? </li>
+                        <li>Who are responsible for these actions? </li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+        <section id="extra-three">
+            <h3>Communication point or action?</h3>
+            <p>
+                Communication, as it is defined in CJML, requires that a sender sends
+                a message directed towards a defined actor in a specific context.
+            </p>
+            <p>
+                Note that acquisition of information (perception and cognition) is
+                not defined as communication in CJML unless the information is communicated
+                actively to an intended receiver and in the context of a journey.
+            </p>
+            <p>
+                <u>Example 1:</u> John is reading the electricity meter and
+                writes down the number on a piece of paper.<br>
+                This step is an action, as John has not yet communicated the number to anyone.
+            </p>
+            <p>
+                <u>Example 2:</u> John sends the meter reading to the utility company through an SMS.
+                <br>This step is definitely a communication point,
+                as the message is actively sent to an intended receiver.
+            </p>
+
+            <p>
+                <u>Other examples:</u>
+                <br><strong>Example of touchpoints that involve direct communication:</strong>
+            <ul class="list-unstyled  sub-ul extra-sub-ul">
+                <li>• A patient has a telephone conversation with the doctor. </li>
+                <li>• The doctor receives an epicrisis from the specialist.</li>
+                <li>• A patient receives a SMS reminder about the upcoming appointment with the doctor.</li>
+            </ul>
+            </p>
+            <p>
+                <br><strong>Example of touchpoints that are not defined as direct communication: </strong>
+            <ul class="list-unstyled  sub-ul extra-sub-ul">
+                <li>• Writing down questions before a visit to the doctor. </li>
+                <li>• Reading an information brochure at the doctor's waiting room.</li>
+                <li>• Looking at the map of the hospital area to find the right building.</li>
+            </ul>
+            </p>
+        </section>
+        <div style="height: 3rem;"></div>
     </div>
 
 
