@@ -28,7 +28,6 @@ const createSwimlane = () => {
 
 const createSwimlaneElement = (actor) => {
     //image get from function. pass actor.role
-    console.log(actor);
     const swimlane = `
     <div class="swimlane-row" data-id = "${actor.id}">
         <div class="swimlane-actor">
@@ -41,7 +40,6 @@ const createSwimlaneElement = (actor) => {
 };
 
 const createActionBoxes = (touchpoint) => {
-    console.log(touchpoint);
     const actionBox = document.createElement("div");
     actionBox.innerHTML += createStatusSymbol(
         touchpoint.senderStatus,
@@ -58,7 +56,6 @@ const createActionBoxes = (touchpoint) => {
 const generateDefaultBoxes = () => {
     let box = "";
     touchpoints.forEach((touchpoint) => {
-        console.log("box");
         box += `<div class="box" box-id="${touchpoint.id}"></div>`;
     });
     return box;

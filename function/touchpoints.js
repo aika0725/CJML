@@ -46,8 +46,6 @@ const createTouchpoint = (e) => {
 
     // Adds new touchpoint to touchpoints array
     touchpoints.push(touchpoint);
-    console.log("Created new touchpoint object");
-    console.log(touchpoints);
 
     // Appends Add action and communication points button
     touchpointContainer.innerHTML += createTouchpointElement(touchpoint);
@@ -83,10 +81,7 @@ const createTouchpointElement = (touchpoint) => {
 };
 
 const createAction = (e) => {
-    console.log("Created action");
     e.innerHTML += createActionElement(e);
-
-    console.log("create actor list in action");
 
     updateActorList4Action(e);
 
@@ -107,9 +102,7 @@ const updateActorList4Action = (e) => {
 };
 
 const createActionElement = (e) => {
-    console.log("Created action element");
     const elementID = e.getAttribute("data-tc");
-    console.log(elementID);
     return `<div class="actionContent">
         <p class="touchpoint-subtitle">Action:</p>
         <div class="question-block">
@@ -154,8 +147,6 @@ const createActionElement = (e) => {
 const createCommunicationPoint = (e) => {
     e.innerHTML += createCommunicationPointElement(e);
 
-    console.log("create actor list in communication");
-
     updateActorList4Communication(e);
     updateTouchpointSender();
     updateTouchpointReciver();
@@ -177,7 +168,6 @@ const updateActorList4Communication = (e) => {
 };
 
 const createCommunicationPointElement = (e) => {
-    console.log("Created communication element");
     const elementID = e.getAttribute("data-tc");
     return `<div class="communicationContent">
         <p class="touchpoint-subtitle">Communication Point:</p>
@@ -273,7 +263,6 @@ const createCommunicationPointElement = (e) => {
 
 const actionButtonHandler = (e) => {
     const elementID = e.getAttribute("data-id");
-    // console.log('Clicked action button with id: ' + elementID)
     const filteredTouchpoints = touchpoints.filter((touchpoint) => {
         return touchpoint.id == elementID;
     });
@@ -284,7 +273,6 @@ const actionButtonHandler = (e) => {
 
 const communicationButtonHandler = (e) => {
     const elementID = e.getAttribute("data-id");
-    // console.log('Clicked communication button with id: ' + e.getAttribute('data-id'))
     const filteredTouchpoints = touchpoints.filter((touchpoint) => {
         return touchpoint.id == e.getAttribute("data-id");
     });
@@ -296,7 +284,6 @@ const communicationButtonHandler = (e) => {
 };
 
 const deleteButtonHandler = (e) => {
-    // console.log('Deleted touchpoint with id: ' + e.getAttribute('data-id'))
     const filteredTouchpoints = touchpoints.filter((touchpoint) => {
         return !(touchpoint.id == e.getAttribute("data-id"));
     });
@@ -350,7 +337,6 @@ const updateOptionalStatusSender = () => {
                     radio.removeAttribute("checked");
                 });
             e.target.setAttribute("checked", true);
-            console.log(touchpoints);
         });
     });
 };
@@ -370,7 +356,6 @@ const updateOptionalStatusReceiver = () => {
                     radio.removeAttribute("checked");
                 });
             e.target.setAttribute("checked", true);
-            console.log(touchpoints);
         });
     });
 };
@@ -390,7 +375,6 @@ const updateTouchpointSender = () => {
                 });
             e.target.setAttribute("checked", true);
             currentTouchpoint[0].senderID = e.target.getAttribute("data-id");
-            console.log(touchpoints);
         });
     });
 };
@@ -410,7 +394,6 @@ const updateTouchpointReciver = () => {
                 });
             e.target.setAttribute("checked", true);
             currentTouchpoint[0].receiverID = e.target.getAttribute("data-id");
-            console.log(touchpoints);
         });
     });
 };
@@ -422,7 +405,6 @@ const updateTouchpointChannel = () => {
             const currentTouchpoint = selectedObject(e);
             currentTouchpoint[0].channel = e.target.value;
             e.target.querySelector("option").textContent = e.target.value;
-            // console.log(touchpoints)
         });
     });
 };
@@ -433,7 +415,6 @@ const updateTouchpointSenderDescription = () => {
             const currentTouchpoint = selectedObject(e);
             currentTouchpoint[0].senderDescription = e.target.value;
             e.target.setAttribute("value", e.target.value);
-            // console.log(touchpoints)
             if (e.target.value == "") {
                 e.target.classList.add("in-valid");
             } else {
@@ -489,7 +470,6 @@ const addDateExplanation = () => {
 
 const checkTouchpoint = (touchpoint) => {
     if (touchpoint.sender == "") {
-        console.log("noooo");
         return false;
     }
 };

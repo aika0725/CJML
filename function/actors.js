@@ -1,33 +1,30 @@
-let actors = []
-const actorContainer = document.querySelector('#actor-container')
+let actors = [];
+const actorContainer = document.querySelector("#actor-container");
 
 const updateActorTitles = () => {
-    const actorTitles = document.querySelectorAll('.actor-title-span')
+    const actorTitles = document.querySelectorAll(".actor-title-span");
     let actorIndex = 1;
-    actorTitles.forEach(title => {
-        title.innerText = 'Actor ' + actorIndex.toString()
-        actorIndex++
+    actorTitles.forEach((title) => {
+        title.innerText = "Actor " + actorIndex.toString();
+        actorIndex++;
     });
-}
+};
 
 const createActor = () => {
-    // Create a new actor object 
+    // Create a new actor object
     const actor = {
         id: Math.floor(Math.random() * 10000),
-        name: '',
-        role: ''
-    }
+        name: "",
+        role: "",
+    };
 
-    actors.push(actor)
-    console.log('create new actor object')
-    console.log(actors)
-
+    actors.push(actor);
     // Appends new actor input form
-    actorContainer.innerHTML += (createActorElement(actor))
-    updateActorTitles()
-     updateActorNameOnInput()
-     updateActorRoleOnInput()
-}
+    actorContainer.innerHTML += createActorElement(actor);
+    updateActorTitles();
+    updateActorNameOnInput();
+    updateActorRoleOnInput();
+};
 
 const createActorElement = (actor) => {
     const actorText = `<div class="item" data-id="${actor.id}">
@@ -57,63 +54,57 @@ const createActorElement = (actor) => {
                 </select>
             </div>
         </div>
-    </div>`
-    return actorText
-}
+    </div>`;
+    return actorText;
+};
 
 const actorDelBtnHandler = (e) => {
-    // console.log('Deleted actor with id: ' + e.getAttribute('data-id'))
-    const filteredActors = actors.filter(actor => {
-        return !(actor.id == e.getAttribute('data-id'))
-        //console.log(e.getAttribute('data-id'))
-    })
-    // console.log(filteredActors)
-    e.closest('.item').remove()
-    actors = filteredActors
-    updateActorTitles()
-}
+    const filteredActors = actors.filter((actor) => {
+        return !(actor.id == e.getAttribute("data-id"));
+    });
+    e.closest(".item").remove();
+    actors = filteredActors;
+    updateActorTitles();
+};
 
 const updateActorNameOnInput = () => {
-    const inputs = document.querySelectorAll('.inputActor')
+    const inputs = document.querySelectorAll(".inputActor");
 
     inputs.forEach((input) => {
-        input.addEventListener('input', (e) => {
-            const index = e.target.closest('.item').getAttribute('data-id')
+        input.addEventListener("input", (e) => {
+            const index = e.target.closest(".item").getAttribute("data-id");
             const currentActor = actors.filter((actor) => {
-                return actor.id == index
-            })
-            e.target.setAttribute('value',e.target.value)
-            currentActor[0].name = e.target.value
-            console.log(actors)
-            if (e.target.value==''){
-                e.target.classList.add("in-valid")
-            }else {
-                e.target.classList.remove("in-valid")
+                return actor.id == index;
+            });
+            e.target.setAttribute("value", e.target.value);
+            currentActor[0].name = e.target.value;
+            if (e.target.value == "") {
+                e.target.classList.add("in-valid");
+            } else {
+                e.target.classList.remove("in-valid");
             }
-        })
-    })
-}
+        });
+    });
+};
 
 const updateActorRoleOnInput = () => {
-    const inputs = document.querySelectorAll('.inputRole')
+    const inputs = document.querySelectorAll(".inputRole");
     inputs.forEach((input) => {
-        input.addEventListener('change', (e) => {
-            const index = e.target.closest('.item').getAttribute('data-id')
+        input.addEventListener("change", (e) => {
+            const index = e.target.closest(".item").getAttribute("data-id");
             const currentActor = actors.filter((actor) => {
-                return actor.id == index
-            })
-            console.log(e.target.querySelector('option'))
-            e.target.querySelector('option').setAttribute('value',e.target.value)
-            e.target.querySelector('option').textContent = e.target.value
-            currentActor[0].role = e.target.value
-            console.log(actors)
-            if (e.target.value==''){
-                e.target.classList.add("in-valid")
-            }else {
-                e.target.classList.remove("in-valid")
+                return actor.id == index;
+            });
+            e.target
+                .querySelector("option")
+                .setAttribute("value", e.target.value);
+            e.target.querySelector("option").textContent = e.target.value;
+            currentActor[0].role = e.target.value;
+            if (e.target.value == "") {
+                e.target.classList.add("in-valid");
+            } else {
+                e.target.classList.remove("in-valid");
             }
-        })
-    })
-}
-
-
+        });
+    });
+};
