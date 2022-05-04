@@ -111,7 +111,7 @@ const createActionElement = (e) => {
         </div>
         <div class="question-block">
             <label for="action_date" class="form-label"><span class="question date-question">
-            Action Start Time:</span>${addDateExplanation()}</label>
+            (Optional)Action Start Time:</span>${addDateExplanation()}</label>
             <input type="datetime-local" name="action_date" class = "form-control date"/>
         </div>
         <div class="question-block">
@@ -195,7 +195,7 @@ const createCommunicationPointElement = (e) => {
         </div>
         <div class="question-block">
             <label for="communication_date" class="form-label"><span class="question date-question">
-            Communication Start Time:${addDateExplanation()}</span>
+            (Optional)Communication Start Time:${addDateExplanation()}</span>
             </label>
             <input type="datetime-local" name="communication_date" class = "form-control date"/>
         </div>
