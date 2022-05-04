@@ -1,33 +1,33 @@
 /* for each row add 105 to height and 100 to margin-bottom */
 .arrow {
-    position: absolute;
-    width: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* z-index: 9999; */
-  }
-  
+  position: absolute;
+  width: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* z-index: 9999; */
+}
+
 .up {
-    height: 120px;
-    margin-left: 80px;
-    margin-bottom: 200px;
-  }
-  
+  height: 120px;
+  margin-left: 80px;
+  margin-bottom: 200px;
+}
+
 .down {
-    height: 46px;
-    margin-left: 70px;
-    transform:  rotate(180deg);
-    margin-bottom: -100px;
-  }
-  
+  height: 46px;
+  margin-left: 70px;
+  transform: rotate(180deg);
+  margin-bottom: -100px;
+}
+
 .arrow-head {
-    margin-left: -10px;
-    margin-bottom: -5px
-  }
-  
+  margin-left: -10px;
+  margin-bottom: -5px
+}
+
 .arrow-body {
-    height: 100%;
-    min-height: 13px;
-  }
+  height: 100%;
+  min-height: 13px;
+}

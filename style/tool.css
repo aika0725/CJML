@@ -307,3 +307,7 @@ li.page-item {
 .touchpoint-status-img {
     width: 100%;
 }
+
+#capture {
+    width: auto;
+}

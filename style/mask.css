@@ -1,28 +1,32 @@
-.modal-backdrop{
-    display: flex; 
-    align-items: center; 
+.modal-backdrop {
+    display: flex;
+    align-items: center;
     justify-content: center;
 }
+
 .mask-layer {
     background-color: transparent;
 }
+
 .mask-btn-start {
     display: flex;
     justify-content: center;
 }
 
-.mask-btn{
+.mask-btn {
     margin-bottom: 20px;
 }
 
 .link-btn {
     color: aliceblue;
 }
-.start-beginning{
+
+.start-beginning {
     background-color: rgb(46, 124, 148);
     color: aliceblue;
     width: 20%;
 }
+
 .mask-title {
     color: aliceblue;
     margin-bottom: 77px;
