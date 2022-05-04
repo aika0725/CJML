@@ -27,9 +27,13 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item ">
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal"
-                                data-bs-target="#staticBackdrop" id="start"> Start/Edit </button>
+                                data-bs-target="#staticBackdrop" id="start""> Start/Edit </button>
                         </li>
-                        <li class="nav-item">
+                        <li class=" nav-item ">
+                            <button type=" button" class="btn btn-danger" id="restart" onclick="resetDiagram()">
+                                Reset </button>
+                        </li>
+                        <li class=" nav-item">
                             <a class="nav-link" id="export-xml" href="#" onclick="exportXML()">Export XML</a>
                         </li>
                         <li class="nav-item">
@@ -191,6 +195,7 @@
         crossorigin="anonymous"></script>
     <script src="https://cdn.bootcss.com/jquery/1.12.1/jquery.min.js"></script>
     <script src="function/exportPng.js"></script>
+    <script src="function/LocalStorage.js"></script>
 </body>
 
 </html>

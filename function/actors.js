@@ -1,5 +1,4 @@
-let actors = [];
-const actorContainer = document.querySelector("#actor-container");
+let actors = JSON.parse(localStorage.getItem("actors")) || [];
 
 const updateActorTitles = () => {
     const actorTitles = document.querySelectorAll(".actor-title-span");
@@ -12,11 +11,14 @@ const updateActorTitles = () => {
 
 const createActor = () => {
     // Create a new actor object
+    const actorContainer = document.querySelector("#actor-container");
     const actor = {
         id: Math.floor(Math.random() * 10000),
         name: "",
         role: "",
     };
+
+    console.log(actor);
 
     actors.push(actor);
     // Appends new actor input form
