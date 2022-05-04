@@ -24,8 +24,6 @@ const createSwimlane = () => {
         canvas.innerHTML += createSwimlaneElement(actor);
     });
     replaceBoxes();
-    console.log(touchpoints);
-    console.log(actors);
     localStorage.setItem("touchpoints", JSON.stringify(touchpoints));
     localStorage.setItem("actors", JSON.stringify(actors));
     localStorage.setItem("modal", document.querySelector(".modal").innerHTML);
