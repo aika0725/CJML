@@ -1,5 +1,7 @@
 const exportPng = () => {
-    html2canvas(document.querySelector("#capture")).then((canvas) => {
+    const captureDiv = document.getElementById("capture");
+    const captureDivWidth = captureDiv.scrollWidth + 20;
+    html2canvas(captureDiv, { width: captureDivWidth }).then((canvas) => {
         exportCanvasAsPNG(canvas);
     });
 };
