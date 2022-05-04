@@ -18,7 +18,6 @@ const createActor = () => {
         role: "",
     };
 
-    console.log(actor);
 
     actors.push(actor);
     // Appends new actor input form
