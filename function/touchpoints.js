@@ -8,7 +8,12 @@ const TouchpointType = {
     communication: "communication",
 };
 
-let touchpoints = [];
+let touchpoints = JSON.parse(localStorage.getItem("touchpoints")) || [];
+
+if (actors.length > 0 || touchpoints.length > 0) {
+    document.querySelector(".modal").innerHTML = localStorage.getItem("modal");
+}
+
 let titleNos = [];
 const touchpointContainer = document.querySelector("#touchpoint-container");
 
